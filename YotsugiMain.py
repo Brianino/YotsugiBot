@@ -2,6 +2,10 @@
 #Insert Bot Token in the line below.
 token = "token-here"
 
+
+
+#Don't edkt from this point, unless you know what you're doing.
+"""-------------------------------------------------------------"""
 import discord
 from discord.ext.commands import Bot
 from discord.ext import commands
