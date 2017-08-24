@@ -19,6 +19,7 @@ from discord.ext.commands import Bot
 from discord.ext import commands
 import asyncio
 import json
+import os
 
 Client = discord.Client()
 bot_prefix= ";"
