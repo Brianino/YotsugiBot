@@ -2,7 +2,7 @@
 #Insert Bot Token in the line below.
 token = ""
 #Insert your ID in the line below.
-author = ''
+owner = ''
 
 
 
@@ -40,8 +40,8 @@ async def ping(ctx):
 
 @client.command(pass_context = True)
 async def dm(ctx, member : discord.Member, *, message):
-     #author = '14587886429345792'
-    if author == ctx.message.author.id:
+     #owner = '14587886429345792'
+    if owner == ctx.message.author.id:
     return await client.send_message(member, message)
 elif:
      await client.say("You can't use this command! Ask for help in Yotsugi Support Server, links in `;stats`. *Ask for help if You REALLY need it.")
@@ -96,8 +96,8 @@ async def ban(ctx, *, member : discord.Member = None):
 @client.command(pass_context=True)
 async def announce(args):
         """Sends a message to all servers the bot is in."""
-     #author = '14587886429345792'
-     if author == ctx.message.author.id: 
+     #owner = '14587886429345792'
+     if owner == ctx.message.author.id: 
      for s in bot.servers:
             await client.send_message(args)
 
@@ -115,8 +115,8 @@ async def uptime():
 @client.command(pass_context = True, Hidden = True)
 async def shutdown(ctx):
 """Quits the bot"""
-    #author = '14587886429345792'
-    if author == ctx.message.author.id:
+    #owner = '14587886429345792'
+    if owner == ctx.message.author.id:
         for server in client.servers:
             await client.send_message(server, "Shutting Down")
         await client.logout()
