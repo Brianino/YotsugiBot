@@ -1,5 +1,6 @@
 #Main File
-
+#Insert Bot Token in the line below.
+token = "token-here"
 
 import discord
 from discord.ext.commands import Bot
@@ -75,3 +76,6 @@ async def shutdown(ctx):
             await client.send_message(server, "Shutting Down")
         await client.logout()
         exit()
+
+
+client.run(token)
