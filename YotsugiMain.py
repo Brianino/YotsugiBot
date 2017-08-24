@@ -38,7 +38,7 @@ async def on_ready():
 async def ping(ctx):
     await client.say("Pong!")
 
-@client.command(pass_context = True)
+@client.command(pass_context = True, no_pm = True)
 async def dm(ctx, member : discord.Member, *, message):
      #owner = '14587886429345792'
     if owner == ctx.message.author.id:
@@ -46,7 +46,7 @@ async def dm(ctx, member : discord.Member, *, message):
 elif:
      await client.say("You can't use this command! Ask for help in Yotsugi Support Server, links in `;stats`. *Ask for help if You REALLY need it.")
 
-@client.command()
+@client.command(no_pm = True)
 async def info(ctx, *, member: discord.Member):
 """User Information"""
 fmt = '{0} joined on {0.joined_at} and has {1} roles.'
@@ -57,12 +57,12 @@ async def info_error(ctx, error):
 if isinstance(error, commands.BadArgument):
 await ctx.send("No user found")
 
-@client.command()
+@client.command(no_pm = True)
 async def roles(ctx, *, member: MemberRoles):
 """Shows a list of roles."""
 await ctx.send("The user has: " + ",".join(member))
 
-@client.command(pass_context = True)
+@client.command(pass_context = True, no_pm = True)
 async def unban(ctx, *, member : discord.Member = None):
     '''Unbans A User From The Server'''
     if not ctx.message.author.server_permissions.administrator:
@@ -77,7 +77,7 @@ async def unban(ctx, *, member : discord.Member = None):
             return await client.say("Privilege too low :x:")
         embed = discord.Embed(description = "**%s** has been Unbanned!!"%member.name, color = 0xFF0000)
 
-@client.command(pass_context = True)
+@client.command(pass_context = True, no_pm = True)
 async def ban(ctx, *, member : discord.Member = None):
     '''Unbans A User From The Server'''
     if not ctx.message.author.server_permissions.administrator:
@@ -93,7 +93,7 @@ async def ban(ctx, *, member : discord.Member = None):
 
         embed = discord.Embed(description = "**%s** has been banned!!"%member.name, color = 0xF00000)
 
-@client.command(pass_context=True)
+@client.command(pass_context=True, no_pm = True)
 async def announce(args):
         """Sends a message to all servers the bot is in."""
      #owner = '14587886429345792'
@@ -101,7 +101,7 @@ async def announce(args):
      for s in bot.servers:
             await client.send_message(args)
 
-@client.command()
+@client.command(no_pm = True)
 async def uptime():
     second = time.time() - start_time
     minute, second = divmod(second, 60)
@@ -112,7 +112,7 @@ async def uptime():
     await client.say(embed = embed)
     
 
-@client.command(pass_context = True, Hidden = True)
+@client.command(pass_context = True, Hidden = True, no_pm = True)
 async def shutdown(ctx):
 """Quits the bot"""
     #owner = '14587886429345792'
