@@ -11,6 +11,13 @@ Client = discord.Client()
 bot_prefix= ";"
 client = commands.Bot(command_prefix=bot_prefix)
 
+@client.before_invoke
+async def before_any_command(ctx):
+     blacklist = ["id-here"]
+     if ctx.message.author.id is in blacklist:
+     return await.ctx.author.send("Failed to execute the command! You've been blacklisted.")
+     pass
+
 @client.event
 async def on_ready():
     print("ID: {}".format(client.user.id))
@@ -43,12 +50,36 @@ async def roles(ctx, *, member: MemberRoles):
 """Shows a list of roles."""
 await ctx.send("The user has: " + ",".join(member))
 
-@client.before_invoke
-async def before_any_command(ctx):
-     blacklist = ["id-here"]
-     if ctx.message.author.id is in blacklist:
-     return await.ctx.author.send("Failed to execute the command! You've been blacklisted.")
-     pass
+@client.command(pass_context = True)
+async def unban(ctx, *, member : discord.Member = None):
+    '''Unbans A User From The Server'''
+    if not ctx.message.author.server_permissions.administrator:
+        return
+ 
+    if not member:
+        return await client.say(ctx.message.author.mention + "Specify a user to Unban!")
+    try:
+        await client.unban(member)
+    except Exception as e:
+        if 'Privilege is too low' in str(e):
+            return await client.say("Privilege too low :x:")
+        embed = discord.Embed(description = "**%s** has been Unbanned!!"%member.name, color = 0xFF0000)
+
+@client.command(pass_context = True)
+async def ban(ctx, *, member : discord.Member = None):
+    '''Unbans A User From The Server'''
+    if not ctx.message.author.server_permissions.administrator:
+        return
+ 
+    if not member:
+        return await client.say(ctx.message.author.mention + "Specify a user to Unban!")
+    try:
+        await client.ban(member)
+    except Exception as e:
+        if 'Privilege is too low' in str(e):
+            return await client.say("Privilege too low :x:")
+
+        embed = discord.Embed(description = "**%s** has been banned!!"%member.name, color = 0xF00000)
 
 @client.command(pass_context=True)
 async def announce(args):
