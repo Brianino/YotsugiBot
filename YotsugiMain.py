@@ -18,6 +18,7 @@ import discord
 from discord.ext.commands import Bot
 from discord.ext import commands
 import asyncio
+import json
 
 Client = discord.Client()
 bot_prefix= ";"
@@ -25,7 +26,8 @@ client = commands.Bot(command_prefix=bot_prefix)
 
 @client.before_invoke
 async def before_any_command(ctx):
-     blacklist = ["id-here"]
+     """-------Monitor This--------"""
+     blacklist = json.load('blacklist.json')
      if ctx.message.author.id is in blacklist:
      return await.ctx.author.send("Failed to execute the command! You've been blacklisted.")
      pass
