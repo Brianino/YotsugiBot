@@ -1,6 +1,12 @@
 #Main File
 #Insert Bot Token in the line below.
-token = "token-here"
+token = ""
+#Insert your ID in the line below.
+author = ''
+
+
+
+
 #No need to edit this line below.
 bot_version = "v0.2"
 
@@ -34,7 +40,7 @@ async def ping(ctx):
 
 @client.command(pass_context = True)
 async def dm(ctx, member : discord.Member, *, message):
-     author = '14587886429345792'
+     #author = '14587886429345792'
     if author == ctx.message.author.id:
     return await client.send_message(member, message)
 elif:
@@ -90,7 +96,9 @@ async def ban(ctx, *, member : discord.Member = None):
 @client.command(pass_context=True)
 async def announce(args):
         """Sends a message to all servers the bot is in."""
-        for s in bot.servers:
+     #author = '14587886429345792'
+     if author == ctx.message.author.id: 
+     for s in bot.servers:
             await client.send_message(args)
 
 @client.command()
@@ -100,14 +108,14 @@ async def uptime():
     hour, minute = divmod(minute, 60)
     day, hour = divmod(hour, 24)
     week, day = divmod(day, 7)
-    embed = discord.Embed(title = "Yotsugi Bot's Uptime", description = "Yotsugi's Uptime: %d weeks %d days %d houes %d minutes %d seconds" % (week, day, hour, minute, second))
+    embed = discord.Embed(title = "Yotsugi Bot's Uptime", description = "Uptime: %d weeks %d days %d houes %d minutes %d seconds" % (week, day, hour, minute, second))
     await client.say(embed = embed)
     
 
 @client.command(pass_context = True, Hidden = True)
 async def shutdown(ctx):
 """Quits the bot"""
-    author = '14587886429345792'
+    #author = '14587886429345792'
     if author == ctx.message.author.id:
         for server in client.servers:
             await client.send_message(server, "Shutting Down")
