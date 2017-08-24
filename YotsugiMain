@@ -20,7 +20,8 @@ async def ping(ctx):
 
 @client.command(pass_context = True)
 async def dm(ctx, member : discord.Member, *, message):
-     if ctx.message.author.id = "14587886429345792":
+     author = '14587886429345792'
+    if author == ctx.message.author.id:
     return await client.send_message(member, message)
 elif:
      await client.say("You can't use this command! Ask for help in Yotsugi Support Server, links in `;stats`. *Ask for help if You REALLY need it.")
@@ -63,3 +64,14 @@ async def uptime():
     week, day = divmod(day, 7)
     embed = discord.Embed(title = "Yotsugi Bot's Uptime", description = %d weeks %d days %d houes %d minutes %d seconds" % (week, day, hour, minute, second))
     await client.say(embed = embed)
+    
+
+@client.command(pass_context = True, Hidden = True)
+async def shutdown(ctx):
+"""Quits the bot"""
+    author = '14587886429345792'
+    if author == ctx.message.author.id:
+        for server in client.servers:
+            await client.send_message(server, "Shutting Down")
+        await client.logout()
+        exit()
