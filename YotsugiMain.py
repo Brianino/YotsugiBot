@@ -12,6 +12,7 @@ bot_version = "v0.2"
 
 
 
+
 #Don't edit from this point, unless you know what you're doing.
 """-------------------------------------------------------------"""
 import discord
@@ -20,6 +21,7 @@ from discord.ext import commands
 import asyncio
 import json
 import os
+#import pickle
 
 Client = discord.Client()
 bot_prefix= ";"
@@ -36,10 +38,14 @@ async def before_any_command(ctx):
 @client.event
 async def on_ready():
     print("ID: {}".format(client.user.id))
+    await client.change_presence(game=discord.Game(name='say ;help'))
 
-@client.command(pass_context=True)
-async def ping(ctx):
-    await client.say("Pong!")
+@client.command()
+async def ping():
+    pingtime = time.time()
+    pingms = await client.say("Pinging...")
+    ping = time.time() - pingtime
+    await client.edit_message(pingms, "Pong! :ping_pong:  The ping time is `%.01f seconds`" % ping)
 
 @client.command(pass_context = True, no_pm = True)
 async def dm(ctx, member : discord.Member, *, message):
@@ -65,6 +71,155 @@ async def roles(ctx, *, member: MemberRoles):
 """Shows a list of roles."""
 await ctx.send("The user has: " + ",".join(member))
 
+@client.command(pass_context = True)
+async def help(ctx):
+     embed = discord.Embed(description = "For the list of commands, click at this link: https://goo.gl/w6Aoag", color = 0xFFFFF)
+     await client.say(embed = embed)
+
+#command1
+@client.command(pass_context = True)
+async def invite(ctx):
+    """   ---Gives invite link for the bot"""
+    embed = discord.Embed(title = "Here are invite links:", description = "Invite me to your server with this link: https://discordapp.com/oauth2/authorize?client_id=331766751765331969&scope=bot&permissions=0", color = 0xFFFFF)
+    return await client.say(embed = embed)
+ 
+#command2
+@client.command(pass_context = True)
+async def banlist(ctx):
+    x = await client.get_bans(ctx.message.server)
+    x = '\n'.join([y.name for y in x])
+    embed = discord.Embed(title = "List of Banned Members", description = x, color = 0xFFFFF)
+    return await client.say(embed = embed)
+ 
+#command3
+@client.command(pass_context=True)
+async def connect(ctx):
+    if client.is_voice_connected(ctx.message.server):
+        return await client.say("I am already connected to a voice channel. Do not disconnect me if I am in use!")
+    author = ctx.message.author
+    voice_channel = author.voice_channel
+    vc = await client.join_voice_channel(voice_channel)
+ 
+#command4
+@client.command(pass_context = True)
+async def disconnect(ctx):
+    for x in client.voice_clients:
+        if(x.server == ctx.message.server):
+            return await x.disconnect()
+     
+ 
+#command6
+@client.command(pass_context=True)       
+async def clear(ctx, number):
+    mgs = []
+    number = int(number) #Converting the amount of messages to delete to an integer
+    async for x in client.logs_from(ctx.message.channel, limit = number):
+        mgs.append(x)
+    await client.delete_messages(mgs)
+	
+#command7
+@client.command(pass_context = True)
+async def stats(ctx):
+    embed = discord.Embed(title = "Yotsugi Bot Stats:", description = "Author: Kyousei#8357  |  Version: v0.2  |  Support Server: https://discord.gg/Fj9uwmT  |  Say ;h for commands.", color = 0xFFFFF)
+    embed.set_thumbnail(url = "http://i.imgur.com/Ow0oWwI.png")
+    return await client.say(embed = embed)
+	
+#command8
+bot_author = "Kyousei#8357"
+@client.command(pass_context = True)
+async def author(ctx):
+    embed = discord.Embed(title = "Yotsugi Bot Author:", description = "Name: " + bot_author "  |  Joined Discord: 07.02.2016  1:10 PM  |  ID: 145878866429345792  |  Email: yotsugibot@gmail.com  |  Say ;h for commands.", color = 0xFFFFF)
+    return await client.say(embed = embed)
+
+#command10
+@client.command(pass_context = True)
+async def kick(ctx, *, member : discord.Member = None):
+    if not ctx.message.author.server_permissions.administrator:
+        return
+
+    if not member:
+        return await client.say(ctx.message.author.mention + "Specify a user to kick!")
+    try:
+        await client.kick(member)
+    except Exception as e:
+        if 'Privilege is too low' in str(e):
+            embed = discord.Embed(description = "Privilege is too low. :x:", color = 0xF00000)
+            return await client.say(embed = embed)
+
+    embed = discord.Embed(description = "**%s** has been kicked."%member.name, color = 0xF00000)
+    return await client.say(embed = embed)
+
+
+
+#command16
+@client.command()
+async def roll(dice : str):
+    """--- Rolled with NdN format. Example: 5d3"""
+    try:
+        rolls, limit = map(int, dice.split('d'))
+    except Exception:
+        await client.say('Format has to be in NdN!')
+        return
+    if (rolls > 100) or (limit > 100):
+        await client.say(":x: You cannot roll more than 100.")
+        return
+
+    result = ', '.join(str(random.randint(1, limit)) for r in range(rolls))
+    await client.say(result)
+
+
+#command17
+@client.command()
+async def github():
+    """  ---Link to Github"""
+    embed = discord.Embed(description = "Yotsugi Github can be found here: https://github.com/YotsugiBot", color = 0xFFFFF)
+    embed.set_thumbnail(url = "http://i.imgur.com/Ow0oWwI.png")
+    await client.say(embed = embed)
+
+     
+#command18
+@client.command(pass_context = True)
+async def servers(ctx):
+    x = '\n'.join([str(server) for server in client.servers])
+    embed = discord.Embed(title = "Servers", description = x, color = 0xFFFFF)
+    return await client.say(embed = embed)
+
+#command12
+@client.command(pass_context=True)
+async def shitpost(ctx):
+    await client.say("http://i.imgur.com/NB1EpSm.png | GitHub Link: https://github.com/YotsugiBot/suggest-things/issues/1")
+
+#command12
+@client.command(pass_context = True)
+async def mute(ctx, *, member : discord.Member):
+    if not ctx.message.author.server_permissions.administrator:
+        return
+    overwrite = discord.PermissionOverwrite()
+    overwrite.send_messages = False
+    await client.edit_channel_permissions(ctx.message.channel, member, overwrite)
+    await client.say("**%s** has been muted!"%member.mention)
+
+#command13
+@client.command(pass_context = True, description='Unmutes the muted members.')
+async def unmute(ctx, *, member : discord.Member):
+    if not ctx.message.author.server_permissions.administrator:
+        return
+    overwrite = discord.PermissionOverwrite()
+    overwrite.send_messages = True
+    await client.edit_channel_permissions(ctx.message.channel, member, overwrite)
+    await client.say("**%s** has been unmuted!"%member.mention)
+
+    
+#command15
+answers = ["My source say no.", "I completely disagree.", "No way in hell!", "Sure! :D", "Why not?", "Why would you say that?", "When life gives you lemons, throw them at people!","Highly doubtful!","Not in a million years!!!","That sounds interesting!")
+
+@client.command(description='Decides for you.')
+async def eightball(*choices):
+    if len(choices) == 0:
+        return await client.say("Give me a proper question.")
+
+    await client.say(random.choice(answers))
+
 @client.command(pass_context = True, no_pm = True)
 async def unban(ctx, *, member : discord.Member = None):
     '''Unbans A User From The Server'''
@@ -82,7 +237,7 @@ async def unban(ctx, *, member : discord.Member = None):
 
 @client.command(pass_context = True, no_pm = True)
 async def ban(ctx, *, member : discord.Member = None):
-    '''Unbans A User From The Server'''
+    '''Bans A User From The Server'''
     if not ctx.message.author.server_permissions.administrator:
         return
  
@@ -125,5 +280,16 @@ async def shutdown(ctx):
         await client.logout()
         exit()
 
+'''import pickle
+import os
+
+filename = 'messages.txt' #What you want your file to be called
+
+if filename in os.listdir(): #checks if the file exists and opens it if it does
+	myfile = open(filename, 'rb')
+	messages = pickle.load(myfile)
+	del myfile
+else:
+	messages = {}'''
 
 client.run(token)
