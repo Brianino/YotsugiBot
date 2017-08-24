@@ -8,8 +8,6 @@
 [**Yotsugi Support Server**](discord.gg/Fj9uwmT)
 
 
-・You can donate via [Patreon][Patreon] if You want to support the project 😄
-[![img][img]](https://www.patreon.com/YotsugiBot)
-
+・You can donate via [Patreon](https://www.patreon.com/YotsugiBot) if You want to support the project 😄
 
 [![Feature Requests](http://feathub.com/NaokoKyouseiNingyou/YotsugiBot?format=svg)](http://feathub.com/NaokoKyouseiNingyou/YotsugiBot)
