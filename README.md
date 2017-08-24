@@ -11,3 +11,10 @@
 ・You can donate via [Patreon](https://www.patreon.com/YotsugiBot) if You want to support the project 😄
 
 [![Feature Requests](http://feathub.com/NaokoKyouseiNingyou/YotsugiBot?format=svg)](http://feathub.com/NaokoKyouseiNingyou/YotsugiBot)
+
+
+
+
+## Self Hosting
+
+If you'd like to self host Yotsugi on your PC, follow the hosting guides at [wiki](https://github.com/Kyousei/YotsugiBot/wiki)
