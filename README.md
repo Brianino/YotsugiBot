@@ -3,6 +3,8 @@
 
 ・Discord Bot called Yotsugi. Coded in Python, open source.
 
+
+[<img src="https://canary.discordapp.com/api/guilds/239669568061046785/widget.png?style=banner2">](https://discord.gg/Fj9uwmT)
 [Yotsugi Support Server](discord.gg/Fj9uwmT)
 
 ・Support the project on [patreon](https://patreon.com/YotsugiBot)
