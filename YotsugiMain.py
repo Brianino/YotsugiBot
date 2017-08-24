@@ -76,14 +76,14 @@ async def help(ctx):
      embed = discord.Embed(description = "For the list of commands, click at this link: https://goo.gl/w6Aoag", color = 0xFFFFF)
      await client.say(embed = embed)
 
-#command1
+
 @client.command(pass_context = True)
 async def invite(ctx):
     """   ---Gives invite link for the bot"""
     embed = discord.Embed(title = "Here are invite links:", description = "Invite me to your server with this link: https://discordapp.com/oauth2/authorize?client_id=331766751765331969&scope=bot&permissions=0", color = 0xFFFFF)
     return await client.say(embed = embed)
  
-#command2
+
 @client.command(pass_context = True)
 async def banlist(ctx):
     x = await client.get_bans(ctx.message.server)
@@ -91,7 +91,7 @@ async def banlist(ctx):
     embed = discord.Embed(title = "List of Banned Members", description = x, color = 0xFFFFF)
     return await client.say(embed = embed)
  
-#command3
+
 @client.command(pass_context=True)
 async def connect(ctx):
     if client.is_voice_connected(ctx.message.server):
@@ -100,7 +100,7 @@ async def connect(ctx):
     voice_channel = author.voice_channel
     vc = await client.join_voice_channel(voice_channel)
  
-#command4
+
 @client.command(pass_context = True)
 async def disconnect(ctx):
     for x in client.voice_clients:
@@ -108,7 +108,7 @@ async def disconnect(ctx):
             return await x.disconnect()
      
  
-#command6
+
 @client.command(pass_context=True)       
 async def clear(ctx, number):
     mgs = []
@@ -117,21 +117,21 @@ async def clear(ctx, number):
         mgs.append(x)
     await client.delete_messages(mgs)
 	
-#command7
+
 @client.command(pass_context = True)
 async def stats(ctx):
     embed = discord.Embed(title = "Yotsugi Bot Stats:", description = "Author: Kyousei#8357  |  Version: v0.2  |  Support Server: https://discord.gg/Fj9uwmT  |  Say ;h for commands.", color = 0xFFFFF)
     embed.set_thumbnail(url = "http://i.imgur.com/Ow0oWwI.png")
     return await client.say(embed = embed)
 	
-#command8
+
 bot_author = "Kyousei#8357"
 @client.command(pass_context = True)
 async def author(ctx):
     embed = discord.Embed(title = "Yotsugi Bot Author:", description = "Name: " + bot_author "  |  Joined Discord: 07.02.2016  1:10 PM  |  ID: 145878866429345792  |  Email: yotsugibot@gmail.com  |  Say ;h for commands.", color = 0xFFFFF)
     return await client.say(embed = embed)
 
-#command10
+
 @client.command(pass_context = True)
 async def kick(ctx, *, member : discord.Member = None):
     if not ctx.message.author.server_permissions.administrator:
@@ -151,7 +151,6 @@ async def kick(ctx, *, member : discord.Member = None):
 
 
 
-#command16
 @client.command()
 async def roll(dice : str):
     """--- Rolled with NdN format. Example: 5d3"""
@@ -161,14 +160,15 @@ async def roll(dice : str):
         await client.say('Format has to be in NdN!')
         return
     if (rolls > 100) or (limit > 100):
-        await client.say(":x: You cannot roll more than 100.")
+	embed = discord.Embed(description = ":x: You can't roll more than 100")
+        await client.say(embed = embed)
         return
 
     result = ', '.join(str(random.randint(1, limit)) for r in range(rolls))
     await client.say(result)
 
 
-#command17
+
 @client.command()
 async def github():
     """  ---Link to Github"""
@@ -177,19 +177,19 @@ async def github():
     await client.say(embed = embed)
 
      
-#command18
+
 @client.command(pass_context = True)
 async def servers(ctx):
     x = '\n'.join([str(server) for server in client.servers])
     embed = discord.Embed(title = "Servers", description = x, color = 0xFFFFF)
     return await client.say(embed = embed)
 
-#command12
+
 @client.command(pass_context=True)
 async def shitpost(ctx):
     await client.say("http://i.imgur.com/NB1EpSm.png | GitHub Link: https://github.com/YotsugiBot/suggest-things/issues/1")
 
-#command12
+
 @client.command(pass_context = True)
 async def mute(ctx, *, member : discord.Member):
     if not ctx.message.author.server_permissions.administrator:
@@ -199,7 +199,7 @@ async def mute(ctx, *, member : discord.Member):
     await client.edit_channel_permissions(ctx.message.channel, member, overwrite)
     await client.say("**%s** has been muted!"%member.mention)
 
-#command13
+
 @client.command(pass_context = True, description='Unmutes the muted members.')
 async def unmute(ctx, *, member : discord.Member):
     if not ctx.message.author.server_permissions.administrator:
@@ -210,7 +210,6 @@ async def unmute(ctx, *, member : discord.Member):
     await client.say("**%s** has been unmuted!"%member.mention)
 
     
-#command15
 answers = ["My source say no.", "I completely disagree.", "No way in hell!", "Sure! :D", "Why not?", "Why would you say that?", "When life gives you lemons, throw them at people!","Highly doubtful!","Not in a million years!!!","That sounds interesting!")
 
 @client.command(description='Decides for you.')
