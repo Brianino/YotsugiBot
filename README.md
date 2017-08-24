@@ -7,7 +7,7 @@
 
 [**Yotsugi Support Server**](discord.gg/Fj9uwmT)
 
-**・Support the project on [patreon](https://patreon.com/YotsugiBot)
+**・Support the project on **[patreon](https://patreon.com/YotsugiBot)
 
 
 
