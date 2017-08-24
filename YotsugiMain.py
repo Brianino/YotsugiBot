@@ -1,10 +1,12 @@
 #Main File
 #Insert Bot Token in the line below.
 token = "token-here"
+#No need to edit this line below.
+bot_version = "v0.2"
 
 
 
-#Don't edkt from this point, unless you know what you're doing.
+#Don't edit from this point, unless you know what you're doing.
 """-------------------------------------------------------------"""
 import discord
 from discord.ext.commands import Bot
