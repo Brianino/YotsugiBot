@@ -100,7 +100,7 @@ async def uptime():
     hour, minute = divmod(minute, 60)
     day, hour = divmod(hour, 24)
     week, day = divmod(day, 7)
-    embed = discord.Embed(title = "Yotsugi Bot's Uptime", description = %d weeks %d days %d houes %d minutes %d seconds" % (week, day, hour, minute, second))
+    embed = discord.Embed(title = "Yotsugi Bot's Uptime", description = "Yotsugi's Uptime: %d weeks %d days %d houes %d minutes %d seconds" % (week, day, hour, minute, second))
     await client.say(embed = embed)
     
 
