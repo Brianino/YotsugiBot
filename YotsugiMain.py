@@ -28,6 +28,7 @@ bot_prefix= ";"
 client = commands.Bot(command_prefix=bot_prefix)
 
 @client.before_invoke
+@client.remove_command("help")
 async def before_any_command(ctx):
      """-------Monitor This--------"""
      blacklist = json.load('blacklist.json')
