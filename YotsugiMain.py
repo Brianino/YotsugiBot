@@ -27,14 +27,14 @@ Client = discord.Client()
 bot_prefix= ";"
 client = commands.Bot(command_prefix=bot_prefix)
 
-@client.before_invoke
+'''@client.before_invoke
 @client.remove_command("help")
 async def before_any_command(ctx):
      """-------Monitor This--------"""
      blacklist = json.load('blacklist.json')
      if ctx.message.author.id is in blacklist:
      return await.ctx.author.send("Failed to execute the command! You've been blacklisted.")
-     pass
+     pass'''
 
 @client.event
 async def on_ready():
@@ -67,20 +67,18 @@ async def info_error(ctx, error):
 if isinstance(error, commands.BadArgument):
 await ctx.send("No user found")
 
-@client.command(no_pm = True)
+'''@client.command(no_pm = True)
 async def roles(ctx, *, member: MemberRoles):
-"""Shows a list of roles."""
-await ctx.send("The user has: " + ",".join(member))
+await ctx.send("The user has: " + ",".join(member))'''
 
 @client.command(pass_context = True)
-async def help(ctx):
+async def h(ctx):
      embed = discord.Embed(description = "For the list of commands, click at this link: https://goo.gl/w6Aoag", color = 0xFFFFF)
      await client.say(embed = embed)
 
 
 @client.command(pass_context = True)
 async def invite(ctx):
-    """   ---Gives invite link for the bot"""
     embed = discord.Embed(title = "Here are invite links:", description = "Invite me to your server with this link: https://discordapp.com/oauth2/authorize?client_id=331766751765331969&scope=bot&permissions=0", color = 0xFFFFF)
     return await client.say(embed = embed)
  
@@ -280,16 +278,5 @@ async def shutdown(ctx):
         await client.logout()
         exit()
 
-'''import pickle
-import os
-
-filename = 'messages.txt' #What you want your file to be called
-
-if filename in os.listdir(): #checks if the file exists and opens it if it does
-	myfile = open(filename, 'rb')
-	messages = pickle.load(myfile)
-	del myfile
-else:
-	messages = {}'''
 
 client.run(token)
