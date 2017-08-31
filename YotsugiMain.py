@@ -57,19 +57,8 @@ elif:
      await client.say("You can't use this command! Ask for help in Yotsugi Support Server, links in `;stats`. *Ask for help if You REALLY need it.")
 
 @client.command(no_pm = True)
-async def info(ctx, *, member: discord.Member):
-"""User Information"""
-fmt = '{0} joined on {0.joined_at} and has {1} roles.'
-await ctx.send(fmt.format(member, len(member.roles)))
-
-@info.error
-async def info_error(ctx, error):
-if isinstance(error, commands.BadArgument):
-await ctx.send("No user found")
-
-'''@client.command(no_pm = True)
 async def roles(ctx, *, member: MemberRoles):
-await ctx.send("The user has: " + ",".join(member))'''
+await ctx.send("The user has: " + ",".join(member))
 
 @client.command(pass_context = True)
 async def h(ctx):
@@ -184,11 +173,6 @@ async def servers(ctx):
     return await client.say(embed = embed)
 
 
-@client.command(pass_context=True)
-async def shitpost(ctx):
-    await client.say("http://i.imgur.com/NB1EpSm.png | GitHub Link: https://github.com/YotsugiBot/suggest-things/issues/1")
-
-
 @client.command(pass_context = True)
 async def mute(ctx, *, member : discord.Member):
     if not ctx.message.author.server_permissions.administrator:
@@ -248,14 +232,6 @@ async def ban(ctx, *, member : discord.Member = None):
             return await client.say("Privilege too low :x:")
 
         embed = discord.Embed(description = "**%s** has been banned!!"%member.name, color = 0xF00000)
-
-@client.command(pass_context=True, no_pm = True)
-async def announce(args):
-        """Sends a message to all servers the bot is in."""
-     #owner = '14587886429345792'
-     if owner == ctx.message.author.id: 
-     for s in bot.servers:
-            await client.send_message(args)
 
 @client.command(no_pm = True)
 async def uptime():
