@@ -47,7 +47,8 @@ async def on_ready():
 
 @client.command(pass_context = True)
 async def send(ctx, member : discord.Member, *, message):
-    return await client.send_message(member, message)
+        if ctx.message.author.id != owner: return await client.say(":x: You are not the bot owner")
+        if ctx.message.author.id == owner: return await client.send_message(member, message)
 
 @client.command(pass_context = True)
 async def h(ctx):
