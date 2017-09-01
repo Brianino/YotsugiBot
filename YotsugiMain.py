@@ -230,15 +230,6 @@ async def setgreet(ctx):
     messages[ctx.message.server] = greet_message
     with open(filename, 'wb') as myfile:
             pickle.dump(messages, myfile)
-    @client.event
-    async def on_member_join(member):
-        global messages
-        greet_message = ctx.message.content
-        messages[ctx.message.server] = greet_message
-        with open(filename, 'wb') as myfile:
-            pickle.dump(messages, myfile)
-        await client.send_message(member.channel)
-
 
 
 @client.command(no_pm = True)
