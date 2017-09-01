@@ -1,12 +1,4 @@
-import discord
-import asyncio
-import random
-import time
-from discord.ext.commands import Bot
-from discord.ext import commands
-
-
-#Credentials
+#Edit these Credentials
 token = ""
 bot_version = 'v0.4'
 owner = ''
@@ -21,6 +13,12 @@ owner = ''
 #---------------------------------------#
 #---------------------------------------#
 #---------------------------------------#
+import discord
+import asyncio
+import random
+import time
+from discord.ext.commands import Bot
+from discord.ext import commands
 import pickle
 import os
 
