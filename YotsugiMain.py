@@ -1,5 +1,4 @@
-#Edit the credentials below
-#Need help? Join https://discord.gg/Fj97uwmT
+#Edit these credentials
 token = ""
 bot_version = 'v0.4'
 owner = ''
