@@ -250,7 +250,10 @@ async def shutdown(ctx):
         
 @client.command(pass_context = True, no_pm = True)
 async def warn(ctx, member : discord.Member, *, message):
-    await client.send_message(member, "You've been muted for: " + message + ", Time Left: ")
+        if ctx.message.author.id != owner:
+                return print("User **" + ctx.message.author.id + "** tried to use :warn in **" + ctx.message.channel.server.id + "**! It did NOT work because they are not the owner")
+        if ctx.message.author.id == owner:
+                return await client.send_message(member, "You've been warned for: **" + message + "**")
 
 @client.command(pass_context = True, no_pm = True)
 async def serverid(ctx, *, member = discord.Member):
