@@ -2,7 +2,8 @@
 token = ""
 bot_version = 'v0.4'
 owner = ''
-
+embed_color = 0xFFFFF
+#Embed color is customizable, but you'll have to find out how to change it via the format above. Hex WILL NOT work.
 
 #Do NOT edit past this point!!!#
 #---------------------------------------#
@@ -52,7 +53,7 @@ async def send(ctx, member : discord.Member, *, message):
 
 @client.command(pass_context = True)
 async def h(ctx):
-    embed = discord.Embed(description = "**Hosting Guides: https://github.com/Kyousei/YotsugiBot/wiki** \n **Commands List: https://goo.gl/w6Aoag**", color = 0xFFFF)
+    embed = discord.Embed(description = "**Hosting Guides: https://github.com/Kyousei/YotsugiBot/wiki** \n **Commands List: https://goo.gl/w6Aoag**", color = embed_color)
     embed.set_thumbnail(url = "https://cdn.discordapp.com/attachments/328351969611874305/352587892645822464/YotsugiPfp.png")
     await client.say(embed = embed) 
 
@@ -76,7 +77,7 @@ async def ping():
 #command1
 @client.command(pass_context = True)
 async def invite(ctx):
-    embed = discord.Embed(title = "Here are invite links:", description = "Invite me to your server with this link: https://discordapp.com/oauth2/authorize?client_id=331766751765331969&scope=bot&permissions=66186303", color = 0xFFFFF)
+    embed = discord.Embed(title = "Here are invite links:", description = "Invite me to your server with this link: https://discordapp.com/oauth2/authorize?client_id=331766751765331969&scope=bot&permissions=66186303", color = embed_color)
     return await client.say(embed = embed)
  
 #command2
@@ -84,7 +85,7 @@ async def invite(ctx):
 async def banlist(ctx):
     x = await client.get_bans(ctx.message.server)
     x = '\n'.join([y.name for y in x])
-    embed = discord.Embed(title = "List of Banned Members", description = x, color = 0xFFFFF)
+    embed = discord.Embed(title = "List of Banned Members", description = x, color = embed_color)
     return await client.say(embed = embed)
  
 #command3
@@ -116,7 +117,7 @@ async def clear(ctx, number):
 bot_author = 'Kyousei#8357'
 @client.command(pass_context = True)
 async def author(ctx):
-    embed = discord.Embed(title = "Yotsugi Bot Author:", description = "Name: **" + bot_author + "**  \n  Joined Discord: **07.02.2016  1:10 PM**  \n  **ID**: 145878866429345792  \n  **Email**: yotsugibot@gmail.com  \n  Say **;h** for commands.", color = 0xFFFFF)
+    embed = discord.Embed(title = "Yotsugi Bot Author:", description = "Name: **" + bot_author + "**  \n  Joined Discord: **07.02.2016  1:10 PM**  \n  **ID**: 145878866429345792  \n  **Email**: yotsugibot@gmail.com  \n  Say **;h** for commands.", color = embed_color)
     return await client.say(embed = embed)
 
 #command9
@@ -208,7 +209,7 @@ async def roll(dice : str):
 @client.command()
 async def github():
     """  ---Link to Github"""
-    embed = discord.Embed(description = "Yotsugi Github can be found here: https://github.com/YotsugiBot", color = 0xFFFFF)
+    embed = discord.Embed(description = "Yotsugi Github can be found here: https://github.com/YotsugiBot", color = embed_color)
     embed.set_thumbnail(url = "https://cdn.discordapp.com/attachments/328351969611874305/352587892645822464/YotsugiPfp.png")
     await client.say(embed = embed)
 
@@ -218,7 +219,7 @@ async def github():
 async def servers(ctx):
     x = '\n'.join([str(server) for server in client.servers])
     print(x)
-    embed = discord.Embed(title = "Servers", description = x, color = 0xFFFFF)
+    embed = discord.Embed(title = "Servers", description = x, color = embed_color)
     return await client.say(embed = embed)
 
 #command19
@@ -238,7 +239,7 @@ async def stats():
     hour, minute = divmod(minute, 60)
     day, hour = divmod(hour, 24)
     week, day = divmod(day, 7)
-    embed = discord.Embed(title = "Yotsugi **" + bot_version + "**", description = "**Yotsugi Emote:** <:YotsugiHeadTilt:332840281525452800> \n\n\n **Author: **" + bot_author + " \n\n\n **Uptime:** \n **%d** weeks, \n **%d** days, \n **%d** hours, \n **%d** minutes, \n **%d** seconds"% (week, day, hour, minute, second), color = 0xFFFF)
+    embed = discord.Embed(title = "Yotsugi **" + bot_version + "**", description = "**Yotsugi Emote:** <:YotsugiHeadTilt:332840281525452800> \n\n\n **Author: **" + bot_author + " \n\n\n **Uptime:** \n **%d** weeks, \n **%d** days, \n **%d** hours, \n **%d** minutes, \n **%d** seconds"% (week, day, hour, minute, second), color = embed_color)
     embed.set_thumbnail(url = "https://cdn.discordapp.com/attachments/328351969611874305/352587892645822464/YotsugiPfp.png")
     await client.say(embed = embed)
 
@@ -246,7 +247,7 @@ async def stats():
 @client.command(pass_context=True, no_pm=True)
 async def shutdown(ctx):
     if owner== ctx.message.author.id:
-        embed = discord.Embed(description = "Shutting Down...", color = 0xFFFF)
+        embed = discord.Embed(description = "Shutting Down...", color = embed_color)
         await client.say(embed = embed)
         await client.logout()
         
@@ -256,12 +257,12 @@ async def warn(ctx, member : discord.Member, *, message):
 
 @client.command(pass_context = True, no_pm = True)
 async def serverid(ctx):
-    embed = discord.Embed(description = ctx.message.author.mention + "**, ID Of this server/guild is: " + ctx.message.channel.server.id + "**", color = 0xFFFFF)
+    embed = discord.Embed(description = ctx.message.author.mention + "**, ID Of this server/guild is: " + ctx.message.channel.server.id + "**", color = embed_color)
     await client.say(embed = embed)
 
 @client.command(pass_context = True, no_pm = True)
 async def channelid(ctx):
-    embed = discord.Embed(description = ctx.message.author.mention + "**, ID of this channel is:** " + ctx.message.channel.id, color = 0xFFFFF)
+    embed = discord.Embed(description = ctx.message.author.mention + "**, ID of this channel is:** " + ctx.message.channel.id, color = embed_color)
     await client.say(embed = embed)
 
 
