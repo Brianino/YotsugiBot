@@ -237,7 +237,7 @@ async def stats():
     hour, minute = divmod(minute, 60)
     day, hour = divmod(hour, 24)
     week, day = divmod(day, 7)
-    embed = discord.Embed(title = "Yotsugi **" + bot_version + "**", description = "**Yotsugi Emote:** <:YotsugiHeadTilt:332840281525452800> \n\n\n **Author: **" + bot_author + " \n\n\n **Uptime:** \n **%d** weeks, \n **%d** days, \n **%d** hours, \n **%d** minutes, \n **%d** seconds"% (week, day, hour, minute, second), color = embed_color)
+    embed = discord.Embed(title = "Yotsugi **" + bot_version + "**", description = "**Author: **" + bot_author + " \n\n\n **Uptime:** \n **%d** weeks, \n **%d** days, \n **%d** hours, \n **%d** minutes, \n **%d** seconds"% (week, day, hour, minute, second), color = embed_color)
     await client.say(embed = embed)
 
 
