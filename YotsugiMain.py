@@ -122,7 +122,7 @@ async def author(ctx):
 #command9
 @client.command(pass_context = True)
 async def ban(ctx, *, member : discord.Member = None):
-    if not ctx.message.author.server_permissions.administrator:
+    if not ctx.message.author.server_permissions.ban_members:
         return
 
     if not member:
@@ -141,7 +141,7 @@ async def ban(ctx, *, member : discord.Member = None):
 #command10
 @client.command(pass_context = True)
 async def kick(ctx, *, member : discord.Member = None):
-    if not ctx.message.author.server_permissions.administrator:
+    if not ctx.message.author.server_permissions.kick_members:
         return
 
     if not member:
@@ -159,7 +159,7 @@ async def kick(ctx, *, member : discord.Member = None):
 #command12
 @client.command(pass_context = True)
 async def mute(ctx, *, member : discord.Member):
-    if not ctx.message.author.server_permissions.administrator:
+    if not ctx.message.author.server_permissions.mute_members:
         return
     overwrite = discord.PermissionOverwrite()
     overwrite.send_messages = False
@@ -169,7 +169,7 @@ async def mute(ctx, *, member : discord.Member):
 #command13
 @client.command(pass_context = True, description='Unmutes the muted members.')
 async def unmute(ctx, *, member : discord.Member):
-    if not ctx.message.author.server_permissions.administrator:
+    if not ctx.message.author.server_permissions.mute_members:
         return
     overwrite = discord.PermissionOverwrite()
     overwrite.send_messages = True
@@ -265,7 +265,7 @@ async def channelid(ctx):
 
 @client.command(pass_context=True, no_pm=True)
 async def removerole(ctx, user: discord.Member, *, role):
-    if ctx.message.author.server_permissions.administrator:
+    if ctx.message.author.server_permissions.manage_roles:
         await client.remove_roles(user, discord.utils.get(ctx.message.server.roles, name=role))
         embed = discord.Embed(description = ("Removed %s from **%s**" % (user.mention, role)), color = embed_color)
         await client.say(embed = embed)
@@ -276,7 +276,7 @@ async def removerole(ctx, user: discord.Member, *, role):
 
 @client.command(pass_context=True, no_pm=True)
 async def setrole(ctx, user: discord.Member, *, role):
-    if ctx.message.author.server_permissions.administrator:
+    if ctx.message.author.server_permissions.manage_roles:
         await client.add_roles(user, discord.utils.get(ctx.message.server.roles, name=role))
         embed = discord.Embed(description = ("Added %s to  **%s**" % (user.mention, role)), color = embed_color)
         await client.say(embed = embed)
