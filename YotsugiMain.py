@@ -230,7 +230,7 @@ async def setgreet(ctx):
             pickle.dump(messages, myfile)
 
 
-@client.command(no_pm = True)
+@client.command(no_pm = False)
 async def stats():
     second = time.time() - start_time
     minute, second = divmod(second, 60)
