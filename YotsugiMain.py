@@ -54,7 +54,6 @@ async def send(ctx, member : discord.Member, *, message):
 @client.command(pass_context = True)
 async def h(ctx):
     embed = discord.Embed(description = "**Hosting Guides: https://github.com/Kyousei/YotsugiBot/wiki** \n **Commands List: https://goo.gl/w6Aoag**", color = embed_color)
-    embed.set_thumbnail(url = "https://cdn.discordapp.com/attachments/328351969611874305/352587892645822464/YotsugiPfp.png")
     await client.say(embed = embed) 
 
 @client.command
@@ -210,7 +209,6 @@ async def roll(dice : str):
 async def github():
     """  ---Link to Github"""
     embed = discord.Embed(description = "Yotsugi Github can be found here: https://github.com/YotsugiBot", color = embed_color)
-    embed.set_thumbnail(url = "https://cdn.discordapp.com/attachments/328351969611874305/352587892645822464/YotsugiPfp.png")
     await client.say(embed = embed)
 
 
@@ -240,7 +238,6 @@ async def stats():
     day, hour = divmod(hour, 24)
     week, day = divmod(day, 7)
     embed = discord.Embed(title = "Yotsugi **" + bot_version + "**", description = "**Yotsugi Emote:** <:YotsugiHeadTilt:332840281525452800> \n\n\n **Author: **" + bot_author + " \n\n\n **Uptime:** \n **%d** weeks, \n **%d** days, \n **%d** hours, \n **%d** minutes, \n **%d** seconds"% (week, day, hour, minute, second), color = embed_color)
-    embed.set_thumbnail(url = "https://cdn.discordapp.com/attachments/328351969611874305/352587892645822464/YotsugiPfp.png")
     await client.say(embed = embed)
 
 
@@ -256,14 +253,42 @@ async def warn(ctx, member : discord.Member, *, message):
     await client.send_message(member, "You've been muted for: " + message + ", Time Left: ")
 
 @client.command(pass_context = True, no_pm = True)
-async def serverid(ctx):
-    embed = discord.Embed(description = ctx.message.author.mention + "**, ID Of this server/guild is: " + ctx.message.channel.server.id + "**", color = embed_color)
+async def serverid(ctx, *, member = discord.Member):
+    embed = discord.Embed(description = ctx.message.author.mention + ", ID of this server is:** " + ctx.message.channel.server.id + "**", color = embed_color)
     await client.say(embed = embed)
 
 @client.command(pass_context = True, no_pm = True)
 async def channelid(ctx):
-    embed = discord.Embed(description = ctx.message.author.mention + "**, ID of this channel is:** " + ctx.message.channel.id, color = embed_color)
+    embed = discord.Embed(description = ctx.message.author.mention + ", ID of this channel is:** " + ctx.message.channel.id + "**", color = embed_color)
     await client.say(embed = embed)
+
+
+@client.command(pass_context=True, no_pm=True)
+async def removerole(ctx, user: discord.Member, *, role):
+    if ctx.message.author.server_permissions.administrator:
+        await client.remove_roles(user, discord.utils.get(ctx.message.server.roles, name=role))
+        embed = discord.Embed(description = ("Removed %s from **%s**" % (user.mention, role)), color = embed_color)
+        await client.say(embed = embed)
+    else:
+        embed = discord.Embed(description = ":x: Insufficient permissions!", color = 0xFF0000)
+        return await client.say(embed = embed)
+
+
+@client.command(pass_context=True, no_pm=True)
+async def setrole(ctx, user: discord.Member, *, role):
+    if ctx.message.author.server_permissions.administrator:
+        await client.add_roles(user, discord.utils.get(ctx.message.server.roles, name=role))
+        embed = discord.Embed(description = ("Added %s to  **%s**" % (user.mention, role)), color = embed_color)
+        await client.say(embed = embed)
+    else:
+        embed = discord.Embed(description = ":x: Insufficient permissions!", color = 0xFF0000)
+        return await client.say(embed = embed)
+
+@client.event
+async def on_message(message):
+    if message.content.startswith(";h ;ban"):
+            embed = discord.Embed(title = ";ban", description = "Bans the mentioned users. \n**Requires *Ban Members* permission**\n\n `Usage: ` ;ban @user", color = embed_color)
+            await client.send_message(message.channel, embed = embed)
 
 
 '''---------------------------------------------------------------------'''
