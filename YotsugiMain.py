@@ -284,11 +284,11 @@ async def setrole(ctx, user: discord.Member, *, role):
         embed = discord.Embed(description = ":x: Insufficient permissions!", color = 0xFF0000)
         return await client.say(embed = embed)
 
-@client.event
+'''@client.event
 async def on_message(message):
     if message.content.startswith(";h ;ban"):
             embed = discord.Embed(title = ";ban", description = "Bans the mentioned users. \n**Requires *Ban Members* permission**\n\n `Usage: ` ;ban @user", color = embed_color)
-            await client.send_message(message.channel, embed = embed)
+            await client.send_message(message.channel, embed = embed)'''
 
 
 '''---------------------------------------------------------------------'''
