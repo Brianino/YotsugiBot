@@ -2,7 +2,7 @@
 token = ""
 owner = ''
 embed_color = 0xFFFFF
-#Embed color is customizable, but you'll have to find out how to change it via the format above. Hex WILL NOT work.
+#Embed color is customizable. Put it like this: 0xYOUR-HEX-CODE
 avatar_location = "F:/YotsugiBot/avatar1.jpg" #Name of the file MUST be: avatar1
 #Change it to file path to .jpg file. ONLY if you want to set avatar via command. (Will only work with .jpg in that folder)
 
