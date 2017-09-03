@@ -1,6 +1,5 @@
 #Edit the credentials below.
 token = ""
-bot_version = 'v0.4'
 owner = ''
 embed_color = 0xFFFFF
 #Embed color is customizable, but you'll have to find out how to change it via the format above. Hex WILL NOT work.
@@ -38,6 +37,7 @@ Client = discord.Client()
 bot_prefix= ";"
 client = commands.Bot(command_prefix=bot_prefix)
 start_time = time.time()
+bot_version = 'v0.4'
  
 @client.event
 async def on_ready():
@@ -245,7 +245,7 @@ async def stats():
 
 @client.command(pass_context=True, no_pm=True)
 async def shutdown(ctx):
-    if owner== ctx.message.author.id:
+    if owner == ctx.message.author.id:
         embed = discord.Embed(description = "Shutting Down...", color = embed_color)
         await client.say(embed = embed)
         await client.logout()
