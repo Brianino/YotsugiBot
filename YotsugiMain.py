@@ -4,6 +4,8 @@ bot_version = 'v0.4'
 owner = ''
 embed_color = 0xFFFFF
 #Embed color is customizable, but you'll have to find out how to change it via the format above. Hex WILL NOT work.
+avatar_location = "F:/YotsugiBot/avatar1.jpg" #Name of the file MUST be: avatar1
+#Change it to file path to .jpg file. ONLY if you want to set avatar via command. (Will only work with .jpg in that folder)
 
 #Do NOT edit past this point!!!#
 #---------------------------------------#
@@ -292,6 +294,12 @@ async def on_message(message):
     if message.content.startswith(";h ;ban"):
             embed = discord.Embed(title = ";ban", description = "Bans the mentioned users. \n**Requires *Ban Members* permission**\n\n `Usage: ` ;ban @user", color = embed_color)
             await client.send_message(message.channel, embed = embed)'''
+
+@client.command(pass_context = True, no_pm = True)
+async def setavatar(ctx):
+    avatar1 = avatar_location
+    with open('avatar1.jpg', 'rb') as f:
+            await client.edit_profile(avatar=f.read())
 
 
 '''---------------------------------------------------------------------'''
