@@ -37,7 +37,7 @@ Client = discord.Client()
 bot_prefix= ";"
 client = commands.Bot(command_prefix=bot_prefix)
 start_time = time.time()
-bot_version = 'v0.4'
+
  
 @client.event
 async def on_ready():
@@ -108,12 +108,16 @@ async def disconnect(ctx):
 #command6
 @client.command(pass_context=True)       
 async def clear(ctx, number):
+    embed = discord.Embed(description = ":x: Insufficient permissions! You require **Manage Messages** permission in order to clear messages!", color = 0xF00000)
+    if not ctx.message.author.server_permissions.manage_messages:
+        return await client.say(embed = embed)
     mgs = []
     number = int(number) #Converting the amount of messages to delete to an integer
     async for x in client.logs_from(ctx.message.channel, limit = number):
         mgs.append(x)
     await client.delete_messages(mgs)
-	
+
+bot_version = 'v0.4.4'
 #command8
 bot_author = 'Kyousei#8357'
 @client.command(pass_context = True)
@@ -184,26 +188,29 @@ answers = ["My source say no.", "I completely disagree.", "No way in hell!", "Su
 @client.command(description='Decides for you.')
 async def eightball(*choices):
     if len(choices) == 0:
-        return await client.say("Give me a proper question.")
+        return await client.say("Ask me a yes or no question.")
+    embed = discord.Embed(description = random.choice(answers), color = embed_color)
+    await client.say(embed = embed)
 
-    await client.say(random.choice(answers))
 
-
-#command16
+#command20
 @client.command()
 async def roll(dice : str):
     """--- Rolled with NdN format. Example: 5d3"""
     try:
         rolls, limit = map(int, dice.split('d'))
     except Exception:
-        await client.say('Format has to be in NdN!')
+        embed = discord.Embed(description = ":x: Format has to be in NdN! (**Example:** `;roll 5d50`)", color = 0xFF0000)
+        await client.say(embed = embed)
         return
     if (rolls > 100) or (limit > 100):
-        await client.say(":x: You cannot roll more than 100.")
+        embed = discord.Embed(description = ":x: You can't roll more than 100!", color = 0xFF0000)
+        await client.say(embed = embed)
         return
 
     result = ', '.join(str(random.randint(1, limit)) for r in range(rolls))
-    await client.say(result)
+    embed = discord.Embed(description = result, color = embed_color)
+    await client.say(embed = embed)
 
 
 #command17
@@ -296,6 +303,25 @@ async def warn(ctx, member : discord.Member, *, message):
         if ctx.message.author.id == owner:
                 embed = discord.Embed(description = "You've been warned for: **" + message + "**\n Responsible Moderator: **" + ctx.message.author.mention + "**", color = 0xFF0000)
                 return await client.send_message(member, embed = embed)
+
+
+@client.command()
+async def ud(*msg):
+    word = ' '.join(msg)
+    api = "http://api.urbandictionary.com/v0/define"
+    response = requests.get(api, params=[("term", word)]).json()
+    embed = discord.Embed(description = "No results found!", color = 0xFF0000)
+    if len(response["list"]) == 0: return await client.say(embed = embed)
+    
+    embed = discord.Embed(title = "Word", description = word, color = embed_color)
+    embed.add_field(name = "Top definition:", value = response['list'][0]['definition'])
+    embed.add_field(name = "Examples:", value = response['list'][0]["example"])
+    embed.set_footer(text = "Tags: " + ', '.join(response['tags']))
+
+    await client.say(embed = embed)
+
+
+    
 
 
 '''---------------------------------------------------------------------'''
