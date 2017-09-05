@@ -19,6 +19,7 @@ import discord
 import asyncio
 import random
 import time
+import requests
 from discord.ext.commands import Bot
 from discord.ext import commands
 import pickle
@@ -301,7 +302,7 @@ async def warn(ctx, member : discord.Member, *, message):
         if ctx.message.author.id != owner:
                 return print("User **" + ctx.message.author.id + "** tried to use :warn in **" + ctx.message.channel.server.id + "**! It did NOT work because they are not the owner")
         if ctx.message.author.id == owner:
-                embed = discord.Embed(description = "You've been warned for: **" + message + "**\n Responsible Moderator: **" + ctx.message.author.mention + "**", color = 0xFF0000)
+                embed = discord.Embed(description = "You've been warned for: **" + message + "**\n Responsible Moderator: **" + ctx.message.author.mention + "**\nServer: **" + ctx.message.server.name + "**", color = 0xFF0000)
                 return await client.send_message(member, embed = embed)
 
 
