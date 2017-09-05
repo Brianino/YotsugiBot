@@ -83,7 +83,7 @@ async def invite(ctx):
     return await client.say(embed = embed)
  
 #command2
-@client.command(pass_context = True)
+@client.command(pass_context = True, no_pm = True)
 async def banlist(ctx):
     x = await client.get_bans(ctx.message.server)
     x = '\n'.join([y.name for y in x])
@@ -91,7 +91,7 @@ async def banlist(ctx):
     return await client.say(embed = embed)
  
 #command3
-@client.command(pass_context=True)
+@client.command(pass_context=True, no_pm = True)
 async def connect(ctx):
     if client.is_voice_connected(ctx.message.server):
         return await client.say("I am already connected to a voice channel. Do not disconnect me if I am in use!")
@@ -100,14 +100,14 @@ async def connect(ctx):
     vc = await client.join_voice_channel(voice_channel)
  
 #command4
-@client.command(pass_context = True)
+@client.command(pass_context = True, no_pm = True)
 async def disconnect(ctx):
     for x in client.voice_clients:
         if(x.server == ctx.message.server):
             return await x.disconnect()
         
 #command6
-@client.command(pass_context=True)       
+@client.command(pass_context=True, no_pm = True)       
 async def clear(ctx, number):
     embed = discord.Embed(description = ":x: Insufficient permissions! You require **Manage Messages** permission in order to clear messages!", color = 0xF00000)
     if not ctx.message.author.server_permissions.manage_messages:
@@ -121,13 +121,13 @@ async def clear(ctx, number):
 bot_version = 'v0.4.4'
 #command8
 bot_author = 'Kyousei#8357'
-@client.command(pass_context = True)
+@client.command(pass_context = True, no_pm = True)
 async def author(ctx):
     embed = discord.Embed(title = "Yotsugi Bot Author:", description = "Name: **" + bot_author + "**  \n  Joined Discord: **07.02.2016  1:10 PM**  \n  **ID**: 145878866429345792  \n  **Email**: yotsugibot@gmail.com  \n  Say **;h** for commands.", color = embed_color)
     return await client.say(embed = embed)
 
 #command9
-@client.command(pass_context = True)
+@client.command(pass_context = True, no_pm = True)
 async def ban(ctx, *, member : discord.Member = None):
     if not ctx.message.author.server_permissions.ban_members:
         return
@@ -146,7 +146,7 @@ async def ban(ctx, *, member : discord.Member = None):
     return await client.say(embed = embed)
 	
 #command10
-@client.command(pass_context = True)
+@client.command(pass_context = True, no_pm = True)
 async def kick(ctx, *, member : discord.Member = None):
     if not ctx.message.author.server_permissions.kick_members:
         return
@@ -164,7 +164,7 @@ async def kick(ctx, *, member : discord.Member = None):
     return await client.say(embed = embed)
 	
 #command12
-@client.command(pass_context = True)
+@client.command(pass_context = True, no_pm = True)
 async def mute(ctx, *, member : discord.Member):
     if not ctx.message.author.server_permissions.mute_members:
         return
@@ -174,7 +174,7 @@ async def mute(ctx, *, member : discord.Member):
     await client.say("**%s** has been muted!"%member.mention)
 
 #command13
-@client.command(pass_context = True, description='Unmutes the muted members.')
+@client.command(pass_context = True, description='Unmutes the muted members.', no_pm = True)
 async def unmute(ctx, *, member : discord.Member):
     if not ctx.message.author.server_permissions.mute_members:
         return
@@ -223,7 +223,7 @@ async def github():
 
 
 #command18
-@client.command(pass_context = True)
+@client.command(pass_context = True, no_pm = True)
 async def servers(ctx):
     x = '\n'.join([str(server) for server in client.servers])
     print(x)
@@ -231,7 +231,7 @@ async def servers(ctx):
     return await client.say(embed = embed)
 
 #command19
-@client.command(pass_context = True)
+@client.command(pass_context = True, no_pm = True)
 async def setgreet(ctx):
     global messages
     greet_message = ctx.message.content
