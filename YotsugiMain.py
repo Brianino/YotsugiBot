@@ -330,7 +330,7 @@ async def setgame(ctx, *, game : str):
                 await client.change_presence(game=discord.Game(name=game), status=ctx.message.server.me.status)
                 logging.info("Set game to " + str(game))
             except Exception as e:
-                print("Failed to set game: {}".format(str(e)) + "\nIgnore this error. It's Python who's being an ass.\nPlease report this on github, https://github.com/Kyousei/YotsugiBot/issues")
+                print("Failed to set game: {}".format(str(e)) + "\nIgnore this error. It's Python who's being an ass.")
     
 
 
