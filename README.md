@@ -12,7 +12,7 @@
 
 ・You can donate via [Patreon](https://www.patreon.com/YotsugiBot) if You want to support the project 😄
 
-[![Feature Requests](http://feathub.com/NaokoKyouseiNingyou/YotsugiBot?format=svg)](http://feathub.com/NaokoKyouseiNingyou/YotsugiBot)
+[![Feature Requests](http://feathub.com/Kyousei/YotsugiBot?format=svg)](http://feathub.com/Kyousei/YotsugiBot)
 
 
 
