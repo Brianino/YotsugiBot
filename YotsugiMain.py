@@ -3,8 +3,6 @@ token = ""
 owner = ''
 embed_color = 0xFFFFF
 #Embed color is customizable. Put it like this: 0xYOUR-HEX-CODE
-avatar_location = "F:/YotsugiBot/avatar1.jpg" #Name of the file MUST be: avatar1
-#Change it to file path to .jpg file. ONLY if you want to set avatar via command. (Will only work with .jpg in that folder)
 
 #Do NOT edit past this point!!!#
 #---------------------------------------#
@@ -322,6 +320,17 @@ async def ud(*msg):
     await client.say(embed = embed)
 
 
+
+@client.command(pass_context = True)
+async def setgame(ctx, *, game : str):
+        if owner != ctx.message.author.id:
+            return await client.say(embed=embeds.permission_denied("You aren't the bot owner!"), color = 0xFF0000)
+        else:
+            try:
+                await client.change_presence(game=discord.Game(name=game), status=ctx.message.server.me.status)
+                logging.info("Set game to " + str(game))
+            except Exception as e:
+                print("Failed to set game: {}".format(str(e)) + "\nIgnore this error. It's Python who's being an ass.\nPlease report this on github, https://github.com/Kyousei/YotsugiBot/issues")
     
 
 
