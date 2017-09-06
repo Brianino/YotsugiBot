@@ -46,7 +46,7 @@ async def on_ready():
     print("Name: {}".format(client.user.name))
     print("ID: {}".format(client.user.id))
     print("-------------------------------------")
-    await client.change_presence(game=discord.Game(name='say ;h'))
+    await client.change_presence(game=discord.Game(name=''))
 
 
 @client.command(pass_context = True)
