@@ -283,7 +283,7 @@ async def removerole(ctx, user: discord.Member, *, role):
 async def setrole(ctx, user: discord.Member, *, role):
     if ctx.message.author.server_permissions.manage_roles:
         await client.add_roles(user, discord.utils.get(ctx.message.server.roles, name=role))
-        embed = discord.Embed(description = ("Added %s to  **%s**" % (user.mention, role)), color = embed_color)
+        embed = discord.Embed(description = ("Added %s to  **%s** " % (user.mention, role)), color = embed_color)
         await client.say(embed = embed)
     else:
         embed = discord.Embed(description = ":x: Insufficient permissions!", color = 0xFF0000)
