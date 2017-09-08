@@ -336,7 +336,7 @@ async def setgame(ctx, *, game : str):
 @client.command(pass_context = True)
 async def update(ctx):
 	linuxupdate = "linuxUPDATE.sh"
-	if linxupdate in os.listdir():
+	if linuxupdate in os.listdir():
 		open(linuxupdate, 'rb')
 		
 
