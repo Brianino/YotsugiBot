@@ -1,6 +1,7 @@
 #Edit the credentials below.
 token = ""
 owner = ''
+prefix = ""
 embed_color = 0xFFFFF
 #Embed color is customizable. Put it like this: 0xYOUR-HEX-CODE
 
@@ -33,7 +34,7 @@ else:
 	messages = {}
 
 Client = discord.Client()
-bot_prefix= ";"
+bot_prefix= prefix
 client = commands.Bot(command_prefix=bot_prefix)
 start_time = time.time()
 
