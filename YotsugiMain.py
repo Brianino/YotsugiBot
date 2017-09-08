@@ -337,7 +337,7 @@ async def setgame(ctx, *, game : str):
 async def update(ctx):
 	linuxupdate = "linuxUPDATE.sh"
 	if linxupdate in os.listdir():
-		open(filename, 'rb')
+		open(linuxupdate, 'rb')
 		
 
 
