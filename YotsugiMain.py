@@ -339,8 +339,7 @@ async def update(ctx):
 	await client.say(embed = embed)
 	linuxupdate = "linuxUPDATE.sh"
 	if linuxupdate in os.listdir():
-		updatefile = open(linuxupdate, 'rb')
-		load(updatefile)
+		open(linuxupdate, 'rb')
 		await client.logout()
 		
 		
