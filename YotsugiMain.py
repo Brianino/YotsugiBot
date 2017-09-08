@@ -340,7 +340,7 @@ async def update(ctx):
 	linuxupdate = "linuxUPDATE.sh"
 	if linuxupdate in os.listdir():
 		open(linuxupdate, 'rb')
-	await client.logout()
+		await client.logout()
 		
 		
 
