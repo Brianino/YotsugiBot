@@ -18,10 +18,6 @@ import asyncio
 import random
 import time
 import requests
-import colorama
-from colorama import init
-init(autoreset = True)
-from colorama import Fore, Back, Style
 from discord.ext.commands import Bot
 from discord.ext import commands
 import pickle
@@ -40,7 +36,7 @@ Client = discord.Client()
 bot_prefix= ";"
 client = commands.Bot(command_prefix=bot_prefix)
 start_time = time.time()
-
+bot_version = "v0.4.4"
  
 @client.event
 async def on_ready():
@@ -91,15 +87,6 @@ async def banlist(ctx):
     x = '\n'.join([y.name for y in x])
     embed = discord.Embed(title = "List of Banned Members", description = x, color = embed_color)
     return await client.say(embed = embed)
- 
-ver = 'v0.4.4'	
-@client.event
-async def on_message(message):
-    if ver == "v0.4.4":
-        print(Fore.GREEN + "Loaded, starting..")
-    if ver != "v0.4.4":
-        print(Fore.RED + "Invalid version! Please undo all changes to ver!\n\n")
-        await client.logout()
 	
 #command3
 @client.command(pass_context=True, no_pm = True)
@@ -258,7 +245,7 @@ async def stats():
     hour, minute = divmod(minute, 60)
     day, hour = divmod(hour, 24)
     week, day = divmod(day, 7)
-    embed = discord.Embed(title = "Yotsugi **" + ver + "**", description = "**Author: **" + bot_author + " \n\n\n **Uptime:** \n **%d** weeks, \n **%d** days, \n **%d** hours, \n **%d** minutes, \n **%d** seconds"% (week, day, hour, minute, second), color = embed_color)
+    embed = discord.Embed(title = "Yotsugi **" + bot_version + "**", description = "**Author: **" + bot_author + " \n\n\n **Uptime:** \n **%d** weeks, \n **%d** days, \n **%d** hours, \n **%d** minutes, \n **%d** seconds"% (week, day, hour, minute, second), color = embed_color)
     await client.say(embed = embed)
 
 
