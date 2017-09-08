@@ -335,7 +335,7 @@ async def setgame(ctx, *, game : str):
 
 @client.command(pass_context = True)
 async def update(ctx):
-	embed = discord.Embed(description = "Shutting down and updating..")
+	embed = discord.Embed(description = "Shutting down and updating..", color = embed_color)
 	await client.say(embed = embed)
 	linuxupdate = "linuxUPDATE.sh"
 	if linuxupdate in os.listdir():
