@@ -333,6 +333,13 @@ async def setgame(ctx, *, game : str):
                 print("Failed to set game: {}".format(str(e)) + "\nIgnore this error. It's Python who's being an ass.")
     
 
+@client.command(pass_context = True)
+async def update(ctx):
+	linuxupdate = "linuxUPDATE.sh"
+	if linxupdate in os.listdir():
+		open(filename, 'rb')
+		
+
 
 '''---------------------------------------------------------------------'''
 
