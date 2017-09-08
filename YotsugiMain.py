@@ -18,6 +18,10 @@ import asyncio
 import random
 import time
 import requests
+import colorama
+from colorama import init
+init(autoreset = True)
+from colorama import Fore, Back, Style
 from discord.ext.commands import Bot
 from discord.ext import commands
 import pickle
@@ -88,6 +92,15 @@ async def banlist(ctx):
     embed = discord.Embed(title = "List of Banned Members", description = x, color = embed_color)
     return await client.say(embed = embed)
  
+	
+@client.event
+async def on_message(message):
+    if ver == "v0.4.4":
+        print(Fore.GREEN + "Loaded, starting..")
+    if ver != "v0.4.4":
+        print(Fore.RED + "Invalid version! Please undo all changes to ver!\n\n")
+        await client.logout()
+	
 #command3
 @client.command(pass_context=True, no_pm = True)
 async def connect(ctx):
