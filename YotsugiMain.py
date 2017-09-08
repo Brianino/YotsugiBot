@@ -335,9 +335,13 @@ async def setgame(ctx, *, game : str):
 
 @client.command(pass_context = True)
 async def update(ctx):
+	embed = discord.Embed(description = "Shutting down and updating..")
+	await client.say(embed = embed)
 	linuxupdate = "linuxUPDATE.sh"
 	if linuxupdate in os.listdir():
 		open(linuxupdate, 'rb')
+	await client.logout()
+		
 		
 
 
