@@ -1,1 +1,1 @@
-git clone https://github.com/Kyousei/YotsugiBot/tree/linux.git
+wget https://github.com/Kyousei/YotsugiBot/archive/linux.zip && unzip linux.zip
