@@ -92,7 +92,7 @@ async def banlist(ctx):
     embed = discord.Embed(title = "List of Banned Members", description = x, color = embed_color)
     return await client.say(embed = embed)
  
-	
+ver = 'v0.4.4'	
 @client.event
 async def on_message(message):
     if ver == "v0.4.4":
@@ -129,7 +129,7 @@ async def clear(ctx, number):
         mgs.append(x)
     await client.delete_messages(mgs)
 
-bot_version = 'v0.4.4'
+
 #command8
 bot_author = 'Kyousei#8357'
 @client.command(pass_context = True, no_pm = True)
@@ -258,7 +258,7 @@ async def stats():
     hour, minute = divmod(minute, 60)
     day, hour = divmod(hour, 24)
     week, day = divmod(day, 7)
-    embed = discord.Embed(title = "Yotsugi **" + bot_version + "**", description = "**Author: **" + bot_author + " \n\n\n **Uptime:** \n **%d** weeks, \n **%d** days, \n **%d** hours, \n **%d** minutes, \n **%d** seconds"% (week, day, hour, minute, second), color = embed_color)
+    embed = discord.Embed(title = "Yotsugi **" + ver + "**", description = "**Author: **" + bot_author + " \n\n\n **Uptime:** \n **%d** weeks, \n **%d** days, \n **%d** hours, \n **%d** minutes, \n **%d** seconds"% (week, day, hour, minute, second), color = embed_color)
     await client.say(embed = embed)
 
 
