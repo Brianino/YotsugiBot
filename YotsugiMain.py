@@ -314,16 +314,6 @@ async def setgame(ctx, *, game : str):
                 logging.info("Set game to " + str(game))
             except Exception as e:
                 print("Failed to set game: {}".format(str(e)) + "\nIgnore this error. It's Python who's being an ass.")
-    
-
-@client.command(pass_context = True)
-async def update(ctx):
-	embed = discord.Embed(description = "Shutting down and updating..", color = embed_color)
-	await client.say(embed = embed)
-	linuxupdate = "linuxUPDATE.sh"
-	if linuxupdate in os.listdir():
-		open(linuxupdate, 'r')
-		await client.logout()
 		
 		
 
