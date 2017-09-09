@@ -24,15 +24,6 @@ from discord.ext import commands
 import pickle
 import os
 
-filename = 'greetmsgs.txt'
-
-if filename in os.listdir(): 
-	myfile = open(filename, 'rb')
-	messages = pickle.load(myfile)
-	del myfile
-else:
-	messages = {}
-
 Client = discord.Client()
 bot_prefix= prefix
 client = commands.Bot(command_prefix=bot_prefix)
@@ -55,7 +46,7 @@ async def send(ctx, member : discord.Member, *, message):
 
 @client.command(pass_context = True)
 async def h(ctx):
-    embed = discord.Embed(description = "**Hosting Guides: https://github.com/Kyousei/YotsugiBot/wiki** \n **Commands List: https://goo.gl/w6Aoag**", color = embed_color)
+    embed = discord.Embed(description = "**Hosting Guides: https://github.com/Kyousei/YotsugiBot/wiki** \n**Commands List: https://goo.gl/w6Aoag**", color = embed_color)
     await client.say(embed = embed) 
 
 @client.command
@@ -122,7 +113,7 @@ bot_version = 'v0.4.4'
 bot_author = 'Kyousei#8357'
 @client.command(pass_context = True, no_pm = True)
 async def author(ctx):
-    embed = discord.Embed(title = "Yotsugi Bot Author:", description = "Name: **" + bot_author + "**  \n  Joined Discord: **07.02.2016  1:10 PM**  \n  **ID**: 145878866429345792  \n  **Email**: yotsugibot@gmail.com  \n  Say **;h** for commands.", color = embed_color)
+    embed = discord.Embed(title = "Yotsugi Bot Author:", description = "Name: **" + bot_author + "**  \nJoined Discord: **07.02.2016  1:10 PM**  \n  **ID**: 145878866429345792  \n**Email**: yotsugibot@gmail.com  \nSay **;h** for commands.", color = embed_color)
     return await client.say(embed = embed)
 
 #command9
@@ -230,15 +221,6 @@ async def servers(ctx):
     embed = discord.Embed(title = "Servers", description = x, color = embed_color)
     return await client.say(embed = embed)
 
-#command19
-@client.command(pass_context = True, no_pm = True)
-async def setgreet(ctx):
-    global messages
-    greet_message = ctx.message.content
-    messages[ctx.message.server] = greet_message
-    with open(filename, 'wb') as myfile:
-            pickle.dump(messages, myfile)
-
 
 @client.command(no_pm = False)
 async def stats():
@@ -247,7 +229,7 @@ async def stats():
     hour, minute = divmod(minute, 60)
     day, hour = divmod(hour, 24)
     week, day = divmod(day, 7)
-    embed = discord.Embed(title = "Yotsugi **" + bot_version + "**", description = "**Author: **" + bot_author + " \n\n\n **Uptime:** \n **%d** weeks, \n **%d** days, \n **%d** hours, \n **%d** minutes, \n **%d** seconds"% (week, day, hour, minute, second), color = embed_color)
+    embed = discord.Embed(title = "Yotsugi **" + bot_version + "**", description = "**Author: **" + bot_author + " \n\n\n **Uptime:** \n**%d** weeks, \n**%d** days, \n**%d** hours, \n**%d** minutes, \n**%d** seconds"% (week, day, hour, minute, second), color = embed_color)
     await client.say(embed = embed)
 
 
@@ -291,18 +273,12 @@ async def setrole(ctx, user: discord.Member, *, role):
         embed = discord.Embed(description = ":x: Insufficient permissions!", color = 0xFF0000)
         return await client.say(embed = embed)
 
-'''@client.event
-async def on_message(message):
-    if message.content.startswith(";h ;ban"):
-            embed = discord.Embed(title = ";ban", description = "Bans the mentioned users. \n**Requires *Ban Members* permission**\n\n `Usage: ` ;ban @user", color = embed_color)
-            await client.send_message(message.channel, embed = embed)'''
-
 @client.command(pass_context = True, no_pm = True)
 async def warn(ctx, member : discord.Member, *, message):
         if ctx.message.author.id != owner:
                 return print("User **" + ctx.message.author.id + "** tried to use :warn in **" + ctx.message.channel.server.id + "**! It did NOT work because they are not the owner")
         if ctx.message.author.id == owner:
-                embed = discord.Embed(description = "You've been warned for: **" + message + "**\n Responsible Moderator: **" + ctx.message.author.mention + "**\nServer: **" + ctx.message.server.name + "**", color = 0xFF0000)
+                embed = discord.Embed(description = "You've been warned for: **" + message + "**\nResponsible Moderator: **" + ctx.message.author.mention + "**\nServer: **" + ctx.message.server.name + "**", color = 0xFF0000)
                 return await client.send_message(member, embed = embed)
 
 
