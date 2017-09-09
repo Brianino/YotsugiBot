@@ -4,7 +4,7 @@
 [![Discord](https://discordapp.com/api/guilds/239669568061046785/widget.png)](https://discord.gg/Fj9uwmT)
 
 
-** Open-source, Discord bot called Yotsugi. Coded in Python using Discord.py library **
+**Open-source, Discord bot called Yotsugi. Coded in Python using Discord.py library**
 
 
 
