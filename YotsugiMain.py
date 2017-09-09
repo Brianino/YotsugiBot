@@ -24,15 +24,6 @@ from discord.ext import commands
 import pickle
 import os
 
-filename = 'greetmsgs.txt'
-
-if filename in os.listdir(): 
-	myfile = open(filename, 'rb')
-	messages = pickle.load(myfile)
-	del myfile
-else:
-	messages = {}
-
 Client = discord.Client()
 bot_prefix= prefix
 client = commands.Bot(command_prefix=bot_prefix)
@@ -228,15 +219,6 @@ async def servers(ctx):
     print(x)
     embed = discord.Embed(title = "Servers", description = x, color = embed_color)
     return await client.say(embed = embed)
-
-#command19
-@client.command(pass_context = True, no_pm = True)
-async def setgreet(ctx):
-    global messages
-    greet_message = ctx.message.content
-    messages[ctx.message.server] = greet_message
-    with open(filename, 'wb') as myfile:
-            pickle.dump(messages, myfile)
 
 
 @client.command(no_pm = False)
