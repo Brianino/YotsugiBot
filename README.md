@@ -7,6 +7,11 @@
 **Open-source, Discord bot called Yotsugi. Coded in Python using Discord.py library**
 
 
+[![yotsugi0](https://cdn.discordapp.com/attachments/328351969611874305/357649557838102531/InviteIt.png)](https://google.com/)
+[![yotsugi1](https://cdn.discordapp.com/attachments/328351969611874305/357649559427612672/SupportServer.png)](https://discord.gg/Fj9uwmT)
+[![yotsugi2](https://cdn.discordapp.com/attachments/328351969611874305/357649555786825728/Commands.png)](https://facebook.com/)
+
+
 
 [**Yotsugi Support Server**](https://discord.gg/Fj9uwmT)
 
