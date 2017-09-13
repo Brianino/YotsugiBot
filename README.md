@@ -13,8 +13,6 @@
 
 
 
-[**Yotsugi Support Server**](https://discord.gg/Fj9uwmT)
-
 
 ・You can donate via [Patreon](https://www.patreon.com/YotsugiBot) if You want to support the project 😄
 
@@ -25,6 +23,11 @@
 
 ## Self Hosting
 
-If you'd like to self host Yotsugi on your PC and your Operating System(OS) is Windows, follow this [guide](https://github.com/Kyousei/YotsugiBot/wiki/Windows-Self-Hosting-Guide).
+If you'd like to self host Yotsugi on your PC and your Operating System(OS) is Windows, follow this [guide]
 
-If you'd like to self host Yotsugi on your Linux/Ubuntu/Debian VPS/PC/Laptop, follow this [guide](https://github.com/Kyousei/YotsugiBot/wiki/Linux-Self-Hosting-Guide).
+(https://github.com/Kyousei/YotsugiBot/wiki/Windows-Self-Hosting-Guide).
+
+
+If you'd like to self host Yotsugi on your Linux/Ubuntu/Debian VPS/PC/Laptop, follow this [guide]
+
+(https://github.com/Kyousei/YotsugiBot/wiki/Linux-Self-Hosting-Guide).
