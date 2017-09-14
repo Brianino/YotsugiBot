@@ -226,8 +226,15 @@ async def github(ctx):
     embed = discord.Embed(description = "Yotsugi Github can be found here: https://github.com/YotsugiBot", color = embed_color)
     await client.say(embed = embed)
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
+	
+	
+@client.command(pass_context = True)
+async def license(ctx):
+	embed = discord.Embed(description = "Read the License [here](https://github.com/Kyousei/YotsugiBot/blob/master/LICENSE.md)", color = embed_color)
+	await client.say(embed = embed)
+	print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
 
-
+	
 #command18
 @client.command(pass_context = True, no_pm = True)
 async def servers(ctx):
