@@ -28,7 +28,7 @@ Client = discord.Client()
 bot_prefix= prefix
 client = commands.Bot(command_prefix=bot_prefix)
 start_time = time.time()
-bot_version = "v0.4.4"
+bot_version = "v0.4.8"
  
 @client.event
 async def on_ready():
