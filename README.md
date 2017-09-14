@@ -7,9 +7,9 @@
 **Open-source, Discord bot called Yotsugi. Coded in Python using Discord.py library**
 
 
-[![yotsugi0](https://cdn.discordapp.com/attachments/328351969611874305/357649557838102531/InviteIt.png)](https://discordapp.com/oauth2/authorize?client_id=331766751765331969&scope=bot&permissions=66186303)
-[![yotsugi1](https://cdn.discordapp.com/attachments/328351969611874305/357649559427612672/SupportServer.png)](https://discord.gg/Fj9uwmT)
-[![yotsugi2](https://cdn.discordapp.com/attachments/328351969611874305/357649555786825728/Commands.png)](https://goo.gl/w6Aoag)
+[![yotsugi0](https://cdn.discordapp.com/attachments/328351969611874305/357905269209956352/InviteIt.png)](https://discordapp.com/oauth2/authorize?client_id=331766751765331969&scope=bot&permissions=66186303)
+[![yotsugi1](https://cdn.discordapp.com/attachments/328351969611874305/357905283424583680/SupportServer.png)](https://discord.gg/Fj9uwmT)
+[![yotsugi2](https://cdn.discordapp.com/attachments/328351969611874305/357905297685348353/Commands.png)](https://goo.gl/w6Aoag)
 
 
 
