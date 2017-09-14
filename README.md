@@ -1,4 +1,4 @@
-# YotsugiBot
+# Yotsugi Bot
 [![Documentation Status](https://readthedocs.org/projects/yotsugi-bot/badge/?version=latest)](http://yotsugibot.readthedocs.io/en/latest/?badge=latest)
 ![img](https://ci.appveyor.com/api/projects/status/gmu6b3ltc80hr3k9?svg=true)
 [![Discord](https://discordapp.com/api/guilds/239669568061046785/widget.png)](https://discord.gg/Fj9uwmT)
