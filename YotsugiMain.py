@@ -115,7 +115,7 @@ async def clear(ctx, number):
     await client.delete_messages(mgs)
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
 
-bot_version = 'v0.5'
+bot_version = 'v0.5.1'
 #command8
 bot_author = 'Kyousei#8357'
 @client.command(pass_context = True, no_pm = True)
