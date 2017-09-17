@@ -102,7 +102,7 @@ async def disconnect(ctx):
             print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
         
 #command6
-@client.command(pass_context=True, no_pm = True)       
+@client.command(pass_context=True, no_pm = True, aliases=['prune', 'purge'])       
 async def clear(ctx, number):
     embed = discord.Embed(description = ":x: Insufficient permissions! You require **Manage Messages** permission in order to clear messages!", color = 0xF00000)
     if not ctx.message.author.server_permissions.manage_messages:
@@ -125,7 +125,7 @@ async def author(ctx):
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
 
 #command9
-@client.command(pass_context = True, no_pm = True)
+@client.command(pass_context = True, no_pm = True, aliases=['b'])
 async def ban(ctx, *, member : discord.Member = None):
     if not ctx.message.author.server_permissions.ban_members:
         return
@@ -147,7 +147,7 @@ async def ban(ctx, *, member : discord.Member = None):
 
 
 #command10
-@client.command(pass_context = True, no_pm = True)
+@client.command(pass_context = True, no_pm = True, aliases=['k'])
 async def kick(ctx, *, member : discord.Member = None):
     if not ctx.message.author.server_permissions.kick_members:
         return
@@ -191,7 +191,7 @@ async def unmute(ctx, *, member : discord.Member):
 #command14
 answers = ["My source say no.", "I completely disagree.", "No way in hell!", "Sure! :D", "Why not?", "Why would you say that?", "When life gives you lemons, throw them at people!", "HA, You wish!", "Keep dreaming!", "Does a green light mean go?", "Red is supposed to stop you, but your magic is TOO strong! :sweat:", "Power outage!??! WHAT ABOUT MY WIFI!??!!", "Hmmm.. this is hard", "lol, just lol.", "Cleverbot is no match for me! Haahahaha", "The chances of that happening are equal to the chances of shivaco getting a girlfriend. Null!", "There's an admin watching :scream:", "Ask me tomorrow :zzz:", "No... I mean yes... Well... Ask again later"]
 
-@client.command(description='Decides for you.')
+@client.command(description='Decides for you.', aliases=['8ball'])
 async def eightball(*choices):
     if len(choices) == 0:
         return await client.say("Ask me a yes or no question.")
@@ -257,7 +257,7 @@ async def stats():
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
 
 
-@client.command(pass_context=True, no_pm=True)
+@client.command(pass_context=True, no_pm=True, aliases=['die'])
 async def shutdown(ctx):
     if owner == ctx.message.author.id:
         embed = discord.Embed(description = "Shutting Down...", color = embed_color)
@@ -266,20 +266,20 @@ async def shutdown(ctx):
         await client.logout()
         
 
-@client.command(pass_context = True, no_pm = True)
+@client.command(pass_context = True, no_pm = True, aliases=['serid'])
 async def serverid(ctx, *, member = discord.Member):
     embed = discord.Embed(description = ctx.message.author.mention + ", ID of this server is:** " + ctx.message.channel.server.id + "**", color = embed_color)
     await client.say(embed = embed)
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
 
-@client.command(pass_context = True, no_pm = True)
+@client.command(pass_context = True, no_pm = True, aliases=['chnlid'])
 async def channelid(ctx):
     embed = discord.Embed(description = ctx.message.author.mention + ", ID of this channel is:** " + ctx.message.channel.id + "**", color = embed_color)
     await client.say(embed = embed)
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
 
 
-@client.command(pass_context=True, no_pm=True)
+@client.command(pass_context=True, no_pm=True, aliases=['remrl'])
 async def removerole(ctx, user: discord.Member, *, role):
     if ctx.message.author.server_permissions.manage_roles:
         await client.remove_roles(user, discord.utils.get(ctx.message.server.roles, name=role))
@@ -292,7 +292,7 @@ async def removerole(ctx, user: discord.Member, *, role):
         print(Fore.RED + "Command Failed To Execute |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]\n       Reason: " + Fore.YELLOW + "Insufficient Permissions! Both user and bot need Manage Roles permission!")
 
 
-@client.command(pass_context=True, no_pm=True)
+@client.command(pass_context=True, no_pm=True, aliases=['setrl'])
 async def setrole(ctx, user: discord.Member, *, role):
     if ctx.message.author.server_permissions.manage_roles:
         await client.add_roles(user, discord.utils.get(ctx.message.server.roles, name=role))
