@@ -34,14 +34,14 @@ async def on_ready():
     await client.change_presence(game=discord.Game(name=''))
 
 
-@client.command(pass_context = True)
+@client.command(pass_context = True, no_pm = True)
 async def send(ctx, member : discord.Member, *, message):
-        if ctx.message.author.id != owner:
-            return await client.say(":x: You are not the bot owner")
-            print(Fore.RED + "Command Failed To Execute |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]\n       Reason:  " + Fore.YELLOW + "Not bot owner!")
-        if ctx.message.author.id == owner:
-            return await client.send_message(member, message)
+        if ctx.message.author.server_permissions.ban_members:
+            return await client.send_message(member, embed=discord.Embed(description="Message from **" + ctx.message.author.mention + "**: " + message, color = embed_color))
             print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
+        else:
+            return await client.say(":x: Insufficient permissions!")
+            print(Fore.RED + "Command Failed To |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]\nReason: " + Fore.YELLOW + "Insufficient Permissions! Both user and bot need Ban Members permission!")
 
 @client.command(pass_context = True)
 async def h(ctx):
