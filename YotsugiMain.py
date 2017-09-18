@@ -345,7 +345,17 @@ async def setgame(ctx, *, game : str):
             except Exception as e:
                 print("Failed to set game: {}".format(str(e)) + "\nIgnore this error. It's Python who's being an ass.")
                 print(Fore.RED + "Command Error Raised, But The Command Was Still Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]\n       Reason: " + Fore.YELLOW + "Ignore this error!")
-    
+
+
+heads = "\data\images\flip_coin\heads.png"
+tails = "\data\images\flip_coin\tails.png"
+@client.command(pass_context=True, aliases=['flip'])
+async def flipcoin(ctx):
+    choice = random.randint(1,2)
+    if choice == 1:
+        await client.send_file(ctx.message.channel, heads, content=ctx.message.author.mention + ", you flipped **Heads**!", tts=False)
+    if choice == 2:
+        await client.send_file(ctx.message.channel, tails, content=ctx.message.author.mention + ", you flipped **Tails**!", tts=False)
 
 
 '''---------------------------------------------------------------------'''
