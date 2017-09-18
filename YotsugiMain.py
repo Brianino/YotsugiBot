@@ -347,8 +347,8 @@ async def setgame(ctx, *, game : str):
                 print(Fore.RED + "Command Error Raised, But The Command Was Still Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]\n       Reason: " + Fore.YELLOW + "Ignore this error!")
 
 
-heads = "\data\images\flip_coin\heads.png"
-tails = "\data\images\flip_coin\tails.png"
+heads = "heads.png"
+tails = "tails.png"
 @client.command(pass_context=True, aliases=['flip'])
 async def flipcoin(ctx):
     choice = random.randint(1,2)
