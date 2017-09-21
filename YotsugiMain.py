@@ -118,6 +118,7 @@ async def clear(ctx, number):
 bot_version = 'v0.5.1'
 #command8
 bot_author = 'Kyousei#8357'
+bot_author_id = '145878866429345792'
 @client.command(pass_context = True, no_pm = True)
 async def author(ctx):
     embed = discord.Embed(title = "Yotsugi Bot Author:", description = "Name: **" + bot_author + "**  \nJoined Discord: **07.02.2016  1:10 PM**  \n  **ID**: 145878866429345792  \n**Email**: yotsugibot@gmail.com  \nSay **;h** for commands.", color = embed_color)
@@ -245,14 +246,18 @@ async def servers(ctx):
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
 
 
-@client.command(no_pm = False)
-async def stats():
+#Stats Command
+@client.command(pass_context = True, no_pm = False)
+async def stats(ctx):
     second = time.time() - start_time
     minute, second = divmod(second, 60)
     hour, minute = divmod(minute, 60)
     day, hour = divmod(hour, 24)
     week, day = divmod(day, 7)
-    embed = discord.Embed(title = "Yotsugi **" + bot_version + "**", description = "**Author: **" + bot_author + " \n\n\n **Uptime:** \n**%d** weeks, \n**%d** days, \n**%d** hours, \n**%d** minutes, \n**%d** seconds"% (week, day, hour, minute, second), color = embed_color)
+    embed = discord.Embed(title = "Yotsugi **" + ver + "**", color = embed_color)
+    embed.add_field(name='Author', value=bot_author, inline=True)
+    embed.add_field(name='Uptime', value="**%d** weeks, \n**%d** days, \n**%d** hours, \n**%d** minutes, \n**%d** seconds"% (week, day, hour, minute, second), inline=True)
+    embed.add_field(name='Owner IDs', value=bot_author_id, inline=True)
     await client.say(embed = embed)
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
 
