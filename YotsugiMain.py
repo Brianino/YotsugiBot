@@ -1,11 +1,5 @@
-#Edit the credentials below.
-token = ""
-owner = ''
-prefix = ""
-embed_color = 0xFFFFF
-#Embed color is customizable. Put it like this: 0xYOUR-HEX-CODE
 
-#Do NOT edit past this point!!!#
+#Do NOT edit past this point, unless you know what you're doing!#
 #---------------------------------------------------------------------------------------------------------------------#
 import discord
 import asyncio
@@ -16,7 +10,15 @@ from discord.ext.commands import Bot
 from discord.ext import commands
 import pickle
 import os
-
+from credentials import BotToken
+from credentials import Owners as owner
+from credentials import EmbedColor as embed_color
+from credentials import Prefix as prefix
+###
+bot_version = 'v0.5.2'
+bot_author = 'Kyousei#8357'
+bot_author_id = '145878866429345792'
+###
 Client = discord.Client()
 bot_prefix= prefix
 client = commands.Bot(command_prefix=bot_prefix)
@@ -115,10 +117,8 @@ async def clear(ctx, number):
     await client.delete_messages(mgs)
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
 
-bot_version = 'v0.5.1'
+
 #command8
-bot_author = 'Kyousei#8357'
-bot_author_id = '145878866429345792'
 @client.command(pass_context = True, no_pm = True)
 async def author(ctx):
     embed = discord.Embed(title = "Yotsugi Bot Author:", description = "Name: **" + bot_author + "**  \nJoined Discord: **07.02.2016  1:10 PM**  \n  **ID**: 145878866429345792  \n**Email**: yotsugibot@gmail.com  \nSay **;h** for commands.", color = embed_color)
@@ -365,4 +365,4 @@ async def flipcoin(ctx):
 
 '''---------------------------------------------------------------------'''
 
-client.run(token)
+client.run(BotToken)

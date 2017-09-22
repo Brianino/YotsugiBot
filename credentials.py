@@ -1,0 +1,7 @@
+BotToken = ""
+
+Owners = ''
+
+EmbedColor = 
+
+Prefix = ""
