@@ -32,7 +32,7 @@ async def on_ready():
     print("Checking files..")
     time.sleep(2)
     print("Logged In | Client Credentials")
-    print(Fore.YELLOW + "\n       Client Name: {}".format(client.user.name) +"\n       Client ID: {}".format(client.user.id) + "\n       Prefix: {}".format(prefix) + "\n       Embed Color: {}".format(embed_color) + "\n       Version: {}".format(ver) + "\n       Owner ID: {}".format(owner))
+    print("\n       Client Name: {}".format(client.user.name) +"\n       Client ID: {}".format(client.user.id) + "\n       Prefix: {}".format(prefix) + "\n       Embed Color: {}".format(embed_color) + "\n       Version: {}".format(bot_version) + "\n       Owner ID: {}".format(owner))
     await client.change_presence(game=discord.Game(name=''))
 
 
@@ -40,10 +40,10 @@ async def on_ready():
 async def send(ctx, member : discord.Member, *, message):
         if ctx.message.author.server_permissions.ban_members:
             return await client.send_message(member, embed=discord.Embed(description="Message from **" + ctx.message.author.mention + "**: " + message, color = embed_color))
-            print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
+            print("Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
         else:
             return await client.say(":x: Insufficient permissions!")
-            print(Fore.RED + "Command Failed To |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]\nReason: " + Fore.YELLOW + "Insufficient Permissions! Both user and bot need Ban Members permission!")
+            print("Command Failed To |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]\nReason: " + Fore.YELLOW + "Insufficient Permissions! Both user and bot need Ban Members permission!")
 
 
 @client.command
@@ -249,7 +249,7 @@ async def stats(ctx):
     hour, minute = divmod(minute, 60)
     day, hour = divmod(hour, 24)
     week, day = divmod(day, 7)
-    embed = discord.Embed(title = "Yotsugi **" + ver + "**", color = embed_color)
+    embed = discord.Embed(title = "Yotsugi **" + bot_version + "**", color = embed_color)
     embed.add_field(name='Author', value=bot_author, inline=True)
     embed.add_field(name='Uptime', value="**%d** weeks, \n**%d** days, \n**%d** hours, \n**%d** minutes, \n**%d** seconds"% (week, day, hour, minute, second), inline=True)
     embed.add_field(name='Owner IDs', value=bot_author_id, inline=True)
