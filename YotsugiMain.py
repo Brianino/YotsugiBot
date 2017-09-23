@@ -306,13 +306,12 @@ async def setrole(ctx, user: discord.Member, *, role):
 
 @client.command(pass_context = True, no_pm = True)
 async def warn(ctx, member : discord.Member, *, message):
-        if ctx.message.author.id != owner:
-                return print("User **" + ctx.message.author.id + "** tried to use :warn in **" + ctx.message.channel.server.id + "**! It did NOT work because they are not the owner")
-                print(Fore.RED + "Command Failed To Execute |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]\n       Reason: " + Fore.YELLOW + "Not owner!")
-        if ctx.message.author.id == owner:
-                embed = discord.Embed(description = "You've been warned for: **" + message + "**\nResponsible Moderator: **" + ctx.message.author.mention + "**\nServer: **" + ctx.message.server.name + "**", color = 0xFF0000)
+        if ctx.message.author.server_permissions.kick_members:
+                embed = discord.Embed(description = "You've been warned for: **" + message + "**\n Responsible Moderator: **" + ctx.message.author.mention + "**\nServer: **" + ctx.message.server.name + "**", color = 0xFF0000)
                 return await client.send_message(member, embed = embed)
-                print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
+        else:
+                embed = discord.Embed(description = ":x: Insufficient Permissions", color = 0xFF0000)
+                return await client.say(embed = embed)
 
 
 @client.command()
