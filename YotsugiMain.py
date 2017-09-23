@@ -15,7 +15,7 @@ from credentials import Owners as owner
 from credentials import EmbedColor as embed_color
 from credentials import Prefix as prefix
 ###
-bot_version = 'v0.5.2'
+bot_version = 'v0.5.3'
 bot_author = 'Kyousei#8357'
 bot_author_id = '145878866429345792'
 ###
