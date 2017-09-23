@@ -366,7 +366,7 @@ async def h(command = None):
             return
 
         #some code to check if the command is an actual command (depends on how you make commands)
-    if command == ';b':
+    if command == prefix+'b':
         embed = discord.Embed(title = "`;ban` / `;b`", description = "Bans the user from the server", color = embed_color)
         embed.add_field(name='Usage', value="`;ban @User/ID` or `;b @User/UserID`", inline=True)
         embed.add_field(name='User Permissions:', value='Ban Members', inline=True)
@@ -375,7 +375,7 @@ async def h(command = None):
         return
 
 
-    if command == ';k':
+    if command == prefix+'k':
         embed = discord.Embed(title = "`;kick` / `;k`", description = "Kicks the user from the server", color = embed_color)
         embed.add_field(name='Usage', value="`;kick @User/ID` or `;k @User/UserID`", inline=True)
         embed.add_field(name='User Permissions:', value='Kick Members', inline=True)
@@ -383,7 +383,7 @@ async def h(command = None):
         await client.say(embed = embed)
         return
 
-    if command == ';serverid':
+    if command == prefix+'serverid':
         embed = discord.Embed(title = "`;serverid` / `;serid`", description = "Show's the ID of the server.", color = embed_color)
         embed.add_field(name='Usage', value="`;serverid` or `;serid`", inline=True)
         embed.add_field(name='User Permissions:', value='`None`', inline=True)
@@ -391,7 +391,7 @@ async def h(command = None):
         await client.say(embed = embed)
         return
 
-    if command == ';ud':
+    if command == prefix+'ud':
         embed = discord.Embed(title = "`;ud`", description = "Searches urban disctionary for the meaning of a word.", color = embed_color)
         embed.add_field(name='Usage', value="`;ud lol`", inline=True)
         embed.add_field(name='User Permissions:', value='`None`', inline=True)
@@ -399,7 +399,7 @@ async def h(command = None):
         await client.say(embed = embed)
         return
 
-    if command == ';8ball':
+    if command == prefix+'8ball':
         embed = discord.Embed(title = "`;eightball` / `;8ball`", description = "8balls your question.", color = embed_color)
         embed.add_field(name='Usage', value="`;eightball to be or not to be` or `;8ball to be or not to be`", inline=True)
         embed.add_field(name='User Permissions:', value='`None`', inline=True)
@@ -407,7 +407,7 @@ async def h(command = None):
         await client.say(embed = embed)
         return
 
-    if command == ';eightball':
+    if command == prefix+'eightball':
         embed = discord.Embed(title = "`;eightball` / `;8ball`", description = "8balls your question.", color = embed_color)
         embed.add_field(name='Usage', value="`;eightball to be or not to be` or `;8ball to be or not to be`", inline=True)
         embed.add_field(name='User Permissions:', value='`None`', inline=True)
@@ -415,7 +415,7 @@ async def h(command = None):
         await client.say(embed = embed)
         return
 
-    if command == ';serid':
+    if command == prefix+'serid':
         embed = discord.Embed(title = "`;serverid` / `;serid`", description = "Show's the ID of the server.", color = embed_color)
         embed.add_field(name='Usage', value="`;serverid` or `;serid`", inline=True)
         embed.add_field(name='User Permissions:', value='`None`', inline=True)
@@ -423,7 +423,7 @@ async def h(command = None):
         await client.say(embed = embed)
         return
 
-    if command == ';clear':
+    if command == prefix+'clear':
         embed = discord.Embed(title = "`;clear` / `;prune` / `;purge`", description = "Deletes `x` amount of messages.", color = embed_color)
         embed.add_field(name='Usage', value="`;clear 5` or `;prune 5` or `;purge 5`", inline=True)
         embed.add_field(name='User Permissions:', value='Manage Messages', inline=True)
@@ -431,7 +431,7 @@ async def h(command = None):
         await client.say(embed = embed)
         return
 
-    if command == ';prune':
+    if command == prefix+'prune':
         embed = discord.Embed(title = "`;clear` / `;prune` / `;purge`", description = "Deletes `x` amount of messages.", color = embed_color)
         embed.add_field(name='Usage', value="`;clear 5` or `;prune 5` or `;purge 5`", inline=True)
         embed.add_field(name='User Permissions:', value='Manage Messages', inline=True)
@@ -439,7 +439,7 @@ async def h(command = None):
         await client.say(embed = embed)
         return
 
-    if command == ';purge':
+    if command == prefix+'purge':
         embed = discord.Embed(title = "`;clear` / `;prune` / `;purge`", description = "Deletes `x` amount of messages.", color = embed_color)
         embed.add_field(name='Usage', value="`;clear 5` or `;prune 5` or `;purge 5`", inline=True)
         embed.add_field(name='User Permissions:', value='Manage Messages', inline=True)
@@ -447,7 +447,7 @@ async def h(command = None):
         await client.say(embed = embed)
         return
 
-    if command == ';mute':
+    if command == prefix+'mute':
         embed = discord.Embed(title = "`;mute`", description = "Mutes the user in the channel where command was ran.", color = embed_color)
         embed.add_field(name='Usage', value="`;mute @User`", inline=True)
         embed.add_field(name='User Permissions:', value='Mute Members', inline=True)
@@ -455,7 +455,7 @@ async def h(command = None):
         await client.say(embed = embed)
         return
 
-    if command == ';unmute':
+    if command == prefix+'unmute':
         embed = discord.Embed(title = "`;unmute`", description = "Mutes the user in the channel where command was ran.", color = embed_color)
         embed.add_field(name='Usage', value="`;unmute @User`", inline=True)
         embed.add_field(name='User Permissions:', value='Mute Members', inline=True)
@@ -463,7 +463,7 @@ async def h(command = None):
         await client.say(embed = embed)
         return
 
-    if command == ';stats':
+    if command == prefix+'stats':
         embed = discord.Embed(title = "`;stats`", description = "Shows bot's statistics.", color = embed_color)
         embed.add_field(name='Usage', value="`;stats`", inline=True)
         embed.add_field(name='User Permissions:', value='`None`', inline=True)
@@ -471,7 +471,7 @@ async def h(command = None):
         await client.say(embed = embed)
         return
 
-    if command == ';author':
+    if command == prefix+'author':
         embed = discord.Embed(title = "`;author`", description = "Shows information about bot author.", color = embed_color)
         embed.add_field(name='Usage', value="`;author`", inline=True)
         embed.add_field(name='User Permissions:', value='`None`', inline=True)
@@ -479,7 +479,7 @@ async def h(command = None):
         await client.say(embed = embed)
         return
 
-    if command == ';banlist':
+    if command == prefix+'banlist':
         embed = discord.Embed(title = "`;banlist`", description = "Shows list of banned users for that server..", color = embed_color)
         embed.add_field(name='Usage', value="`;banlist`", inline=True)
         embed.add_field(name='User Permissions:', value='`None`', inline=True)
@@ -487,7 +487,7 @@ async def h(command = None):
         await client.say(embed = embed)
         return
 
-    if command == ';ping':
+    if command == prefix+'ping':
         embed = discord.Embed(title = "`;ping`", description = "Shows your ping to the bot..", color = embed_color)
         embed.add_field(name='Usage', value="`;ping`", inline=True)
         embed.add_field(name='User Permissions:', value='`None`', inline=True)
@@ -495,7 +495,7 @@ async def h(command = None):
         await client.say(embed = embed)
         return
 
-    if command == ';connect':
+    if command == prefix+'connect':
         embed = discord.Embed(title = "`;connect`", description = "Joins the voice channel.", color = embed_color)
         embed.add_field(name='Usage', value="`;connect`", inline=True)
         embed.add_field(name='User Permissions:', value='`None`', inline=True)
@@ -503,7 +503,7 @@ async def h(command = None):
         await client.say(embed = embed)
         return
 
-    if command == ';disconnect':
+    if command == prefix+'disconnect':
         embed = discord.Embed(title = "`;disconnect`", description = "Leaves the voice channel.", color = embed_color)
         embed.add_field(name='Usage', value="`;disconnect`", inline=True)
         embed.add_field(name='User Permissions:', value='`None`', inline=True)
@@ -511,7 +511,7 @@ async def h(command = None):
         await client.say(embed = embed)
         return
 
-    if command == ';channelid':
+    if command == prefix+'channelid':
         embed = discord.Embed(title = "`;channelid` / `;chnlid``", description = "Shows the channel ID the command was ran in.", color = embed_color)
         embed.add_field(name='Usage', value="`;channelid` or `;chnlid`", inline=True)
         embed.add_field(name='User Permissions:', value='`None`', inline=True)
@@ -519,7 +519,7 @@ async def h(command = None):
         await client.say(embed = embed)
         return
 
-    if command == ';chnlid':
+    if command == prefix+'chnlid':
         embed = discord.Embed(title = "`;channelid` / `;chnlid``", description = "Shows the channel ID the command was ran in.", color = embed_color)
         embed.add_field(name='Usage', value="`;channelid` or `;chnlid`", inline=True)
         embed.add_field(name='User Permissions:', value='`None`', inline=True)
@@ -527,7 +527,7 @@ async def h(command = None):
         await client.say(embed = embed)
         return
 
-    if command == ';github':
+    if command == prefix+'github':
         embed = discord.Embed(title = "`;github`", description = "Gives the link to GitHub.", color = embed_color)
         embed.add_field(name='Usage', value="`;github`", inline=True)
         embed.add_field(name='User Permissions:', value='`None`', inline=True)
@@ -535,7 +535,7 @@ async def h(command = None):
         await client.say(embed = embed)
         return
 
-    if command == ';send':
+    if command == prefix+'send':
         embed = discord.Embed(title = "`;send`", description = "Sends a message to a user.", color = embed_color)
         embed.add_field(name='Usage', value="`;send @User Hi`", inline=True)
         embed.add_field(name='User Permissions:', value='`None`', inline=True)
@@ -543,7 +543,7 @@ async def h(command = None):
         await client.say(embed = embed)
         return
 
-    if command == ';shutdown':
+    if command == prefix+'shutdown':
         embed = discord.Embed(title = "`;die` / `;shutdown`", description = "Boots the bot offline.", color = embed_color)
         embed.add_field(name='Usage', value="`;shutdown` or `;die`", inline=True)
         embed.add_field(name='User Permissions:', value='`None`', inline=True)
@@ -551,7 +551,7 @@ async def h(command = None):
         await client.say(embed = embed)
         return
 
-    if command == ';die':
+    if command == prefix+'die':
         embed = discord.Embed(title = "`;die` / `;shutdown`", description = "Boots the bot offline.", color = embed_color)
         embed.add_field(name='Usage', value="`;shutdown` or `;die`", inline=True)
         embed.add_field(name='User Permissions:', value='`None`', inline=True)
@@ -559,7 +559,7 @@ async def h(command = None):
         await client.say(embed = embed)
         return
 
-    if command == ';setrole':
+    if command == prefix+'setrole':
         embed = discord.Embed(title = "`;setrole` / `;setrl`", description = "Gives a role to a user.", color = embed_color)
         embed.add_field(name='Usage', value="`;setrole @User Role-Name` or `;setrl @User Role-Name`", inline=True)
         embed.add_field(name='User Permissions:', value='`None`', inline=True)
@@ -567,7 +567,7 @@ async def h(command = None):
         await client.say(embed = embed)
         return
 
-    if command == ';setrl':
+    if command == prefix+'setrl':
         embed = discord.Embed(title = "`;setrole` / `;setrl`", description = "Gives a role to the user.", color = embed_color)
         embed.add_field(name='Usage', value="`;setrole @User Role-Name` or `;setrl @User Role-Name`", inline=True)
         embed.add_field(name='User Permissions:', value='`None`', inline=True)
@@ -575,7 +575,7 @@ async def h(command = None):
         await client.say(embed = embed)
         return
 
-    if command == ';removerole':
+    if command == prefix+'removerole':
         embed = discord.Embed(title = "`;removerole` / `;remrl`", description = "Removes a role from the user.", color = embed_color)
         embed.add_field(name='Usage', value="`;removerole @User Role-Name` or `;remrl @User Role-Name`", inline=True)
         embed.add_field(name='User Permissions:', value='`None`', inline=True)
@@ -583,7 +583,7 @@ async def h(command = None):
         await client.say(embed = embed)
         return
 
-    if command == ';remrl':
+    if command == prefix+'remrl':
         embed = discord.Embed(title = "`;removerole` / `;remrl`", description = "Removes a role from the user.", color = embed_color)
         embed.add_field(name='Usage', value="`;removerole @User Role-Name` or `;remrl @User Role-Name`", inline=True)
         embed.add_field(name='User Permissions:', value='`None`', inline=True)
@@ -591,7 +591,7 @@ async def h(command = None):
         await client.say(embed = embed)
         return
 
-    if command == ';flip':
+    if command == prefix+'flip':
         embed = discord.Embed(title = "`;flip` / `;flipcoin`", description = "Flips the coin.", color = embed_color)
         embed.add_field(name='Usage', value="`;flip` or `;flipcoin`", inline=True)
         embed.add_field(name='User Permissions:', value='`None`', inline=True)
@@ -599,7 +599,7 @@ async def h(command = None):
         await client.say(embed = embed)
         return
 
-    if command == ';roll':
+    if command == prefix+'roll':
         embed = discord.Embed(title = "`;roll`", description = "Rolls the dice in NdN format.", color = embed_color)
         embed.add_field(name='Usage', value="`;roll 5d5`", inline=True)
         embed.add_field(name='User Permissions:', value='`None`', inline=True)
@@ -607,7 +607,7 @@ async def h(command = None):
         await client.say(embed = embed)
         return
 
-    if command == ';servers':
+    if command == prefix+'servers':
         embed = discord.Embed(title = "`;servers`", description = "Shows the list of servers the bot is in.", color = embed_color)
         embed.add_field(name='Usage', value="`;servers`", inline=True)
         embed.add_field(name='User Permissions:', value='`None`', inline=True)
@@ -615,7 +615,7 @@ async def h(command = None):
         await client.say(embed = embed)
         return
 
-    if command == ';h':
+    if command == prefix+'h':
         embed = discord.Embed(title = "`;h`", description = "Shows the info about a command.", color = embed_color)
         embed.add_field(name='Usage', value="`;h ;ban`", inline=True)
         embed.add_field(name='User Permissions:', value='`None`', inline=True)
