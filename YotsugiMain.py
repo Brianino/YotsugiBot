@@ -631,6 +631,14 @@ async def h(command = None):
         await client.say(embed = embed)
         return
 
+    if command == prefix+'warn':
+        embed = discord.Embed(title = "`"+ prefix +"warn`", description = "Warns the user.", color = embed_color)
+        embed.add_field(name='Usage', value="`"+ prefix +"warn @USer Rude`", inline=True)
+        embed.add_field(name='User Permissions:', value='`None`', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        await client.say(embed = embed)
+        return
+
     if command == prefix+'h':
         embed = discord.Embed(title = "`"+ prefix +"h`", description = "Shows the info about a command.", color = embed_color)
         embed.add_field(name='Usage', value="`"+ prefix +"h "+ prefix +"ban`", inline=True)
