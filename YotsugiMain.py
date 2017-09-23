@@ -66,7 +66,7 @@ async def ping(ctx):
     pingtime = time.time()
     pingms = await client.say("Pinging...")
     ping = time.time() - pingtime
-    await client.edit_message(pingms, "Pong! :ping_pong:  The ping time is `%.f ms`" % ping)
+    await client.edit_message(pingms, "Pong! :ping_pong:  The ping time is `%.1f ms`" % ping)
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
  
 #command1
