@@ -45,11 +45,6 @@ async def send(ctx, member : discord.Member, *, message):
             return await client.say(":x: Insufficient permissions!")
             print(Fore.RED + "Command Failed To |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]\nReason: " + Fore.YELLOW + "Insufficient Permissions! Both user and bot need Ban Members permission!")
 
-@client.command(pass_context = True)
-async def h(ctx):
-    embed = discord.Embed(description = "**Hosting Guides: https://github.com/Kyousei/YotsugiBot/wiki** \n**Commands List: https://goo.gl/w6Aoag**", color = embed_color)
-    await client.say(embed = embed)
-    print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
 
 @client.command
 async def h(command = None):
@@ -361,6 +356,273 @@ async def flipcoin(ctx):
         await client.send_file(ctx.message.channel, heads, content=ctx.message.author.mention + ", you flipped **Heads**!", tts=False)
     if choice == 2:
         await client.send_file(ctx.message.channel, tails, content=ctx.message.author.mention + ", you flipped **Tails**!", tts=False)
+
+
+@client.command()
+async def h(command = None):
+    embed = discord.Embed(description = "**Hosting Guides: https://github.com/Kyousei/YotsugiBot/wiki** \n**Commands List: https://goo.gl/w6Aoag**", color = embed_color)
+    if not command:
+            await client.say(embed = embed)
+            return
+
+        #some code to check if the command is an actual command (depends on how you make commands)
+    if command == ';b':
+        embed = discord.Embed(title = "`;ban` / `;b`", description = "Bans the user from the server", color = embed_color)
+        embed.add_field(name='Usage', value="`;ban @User/ID` or `;b @User/UserID`", inline=True)
+        embed.add_field(name='User Permissions:', value='Ban Members', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Ban Members', inline=True)
+        await client.say(embed = embed)
+        return
+
+
+    if command == ';k':
+        embed = discord.Embed(title = "`;kick` / `;k`", description = "Kicks the user from the server", color = embed_color)
+        embed.add_field(name='Usage', value="`;kick @User/ID` or `;k @User/UserID`", inline=True)
+        embed.add_field(name='User Permissions:', value='Kick Members', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Kick Members', inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == ';serverid':
+        embed = discord.Embed(title = "`;serverid` / `;serid`", description = "Show's the ID of the server.", color = embed_color)
+        embed.add_field(name='Usage', value="`;serverid` or `;serid`", inline=True)
+        embed.add_field(name='User Permissions:', value='`None`', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == ';ud':
+        embed = discord.Embed(title = "`;ud`", description = "Searches urban disctionary for the meaning of a word.", color = embed_color)
+        embed.add_field(name='Usage', value="`;ud lol`", inline=True)
+        embed.add_field(name='User Permissions:', value='`None`', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == ';8ball':
+        embed = discord.Embed(title = "`;eightball` / `;8ball`", description = "8balls your question.", color = embed_color)
+        embed.add_field(name='Usage', value="`;eightball to be or not to be` or `;8ball to be or not to be`", inline=True)
+        embed.add_field(name='User Permissions:', value='`None`', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == ';eightball':
+        embed = discord.Embed(title = "`;eightball` / `;8ball`", description = "8balls your question.", color = embed_color)
+        embed.add_field(name='Usage', value="`;eightball to be or not to be` or `;8ball to be or not to be`", inline=True)
+        embed.add_field(name='User Permissions:', value='`None`', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == ';serid':
+        embed = discord.Embed(title = "`;serverid` / `;serid`", description = "Show's the ID of the server.", color = embed_color)
+        embed.add_field(name='Usage', value="`;serverid` or `;serid`", inline=True)
+        embed.add_field(name='User Permissions:', value='`None`', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == ';clear':
+        embed = discord.Embed(title = "`;clear` / `;prune` / `;purge`", description = "Deletes `x` amount of messages.", color = embed_color)
+        embed.add_field(name='Usage', value="`;clear 5` or `;prune 5` or `;purge 5`", inline=True)
+        embed.add_field(name='User Permissions:', value='Manage Messages', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == ';prune':
+        embed = discord.Embed(title = "`;clear` / `;prune` / `;purge`", description = "Deletes `x` amount of messages.", color = embed_color)
+        embed.add_field(name='Usage', value="`;clear 5` or `;prune 5` or `;purge 5`", inline=True)
+        embed.add_field(name='User Permissions:', value='Manage Messages', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Manage Messages', inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == ';purge':
+        embed = discord.Embed(title = "`;clear` / `;prune` / `;purge`", description = "Deletes `x` amount of messages.", color = embed_color)
+        embed.add_field(name='Usage', value="`;clear 5` or `;prune 5` or `;purge 5`", inline=True)
+        embed.add_field(name='User Permissions:', value='Manage Messages', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Manage Messages', inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == ';mute':
+        embed = discord.Embed(title = "`;mute`", description = "Mutes the user in the channel where command was ran.", color = embed_color)
+        embed.add_field(name='Usage', value="`;mute @User`", inline=True)
+        embed.add_field(name='User Permissions:', value='Mute Members', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Manage Channels', inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == ';unmute':
+        embed = discord.Embed(title = "`;unmute`", description = "Mutes the user in the channel where command was ran.", color = embed_color)
+        embed.add_field(name='Usage', value="`;unmute @User`", inline=True)
+        embed.add_field(name='User Permissions:', value='Mute Members', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Manage Channels', inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == ';stats':
+        embed = discord.Embed(title = "`;stats`", description = "Shows bot's statistics.", color = embed_color)
+        embed.add_field(name='Usage', value="`;stats`", inline=True)
+        embed.add_field(name='User Permissions:', value='`None`', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == ';author':
+        embed = discord.Embed(title = "`;author`", description = "Shows information about bot author.", color = embed_color)
+        embed.add_field(name='Usage', value="`;author`", inline=True)
+        embed.add_field(name='User Permissions:', value='`None`', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == ';banlist':
+        embed = discord.Embed(title = "`;banlist`", description = "Shows list of banned users for that server..", color = embed_color)
+        embed.add_field(name='Usage', value="`;banlist`", inline=True)
+        embed.add_field(name='User Permissions:', value='`None`', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == ';ping':
+        embed = discord.Embed(title = "`;ping`", description = "Shows your ping to the bot..", color = embed_color)
+        embed.add_field(name='Usage', value="`;ping`", inline=True)
+        embed.add_field(name='User Permissions:', value='`None`', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == ';connect':
+        embed = discord.Embed(title = "`;connect`", description = "Joins the voice channel.", color = embed_color)
+        embed.add_field(name='Usage', value="`;connect`", inline=True)
+        embed.add_field(name='User Permissions:', value='`None`', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Connect', inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == ';disconnect':
+        embed = discord.Embed(title = "`;disconnect`", description = "Leaves the voice channel.", color = embed_color)
+        embed.add_field(name='Usage', value="`;disconnect`", inline=True)
+        embed.add_field(name='User Permissions:', value='`None`', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Connect', inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == ';channelid':
+        embed = discord.Embed(title = "`;channelid` / `;chnlid``", description = "Shows the channel ID the command was ran in.", color = embed_color)
+        embed.add_field(name='Usage', value="`;channelid` or `;chnlid`", inline=True)
+        embed.add_field(name='User Permissions:', value='`None`', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == ';chnlid':
+        embed = discord.Embed(title = "`;channelid` / `;chnlid``", description = "Shows the channel ID the command was ran in.", color = embed_color)
+        embed.add_field(name='Usage', value="`;channelid` or `;chnlid`", inline=True)
+        embed.add_field(name='User Permissions:', value='`None`', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == ';github':
+        embed = discord.Embed(title = "`;github`", description = "Gives the link to GitHub.", color = embed_color)
+        embed.add_field(name='Usage', value="`;github`", inline=True)
+        embed.add_field(name='User Permissions:', value='`None`', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == ';send':
+        embed = discord.Embed(title = "`;send`", description = "Sends a message to a user.", color = embed_color)
+        embed.add_field(name='Usage', value="`;send @User Hi`", inline=True)
+        embed.add_field(name='User Permissions:', value='`None`', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == ';shutdown':
+        embed = discord.Embed(title = "`;die` / `;shutdown`", description = "Boots the bot offline.", color = embed_color)
+        embed.add_field(name='Usage', value="`;shutdown` or `;die`", inline=True)
+        embed.add_field(name='User Permissions:', value='`None`', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == ';die':
+        embed = discord.Embed(title = "`;die` / `;shutdown`", description = "Boots the bot offline.", color = embed_color)
+        embed.add_field(name='Usage', value="`;shutdown` or `;die`", inline=True)
+        embed.add_field(name='User Permissions:', value='`None`', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == ';setrole':
+        embed = discord.Embed(title = "`;setrole` / `;setrl`", description = "Gives a role to a user.", color = embed_color)
+        embed.add_field(name='Usage', value="`;setrole @User Role-Name` or `;setrl @User Role-Name`", inline=True)
+        embed.add_field(name='User Permissions:', value='`None`', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == ';setrl':
+        embed = discord.Embed(title = "`;setrole` / `;setrl`", description = "Gives a role to the user.", color = embed_color)
+        embed.add_field(name='Usage', value="`;setrole @User Role-Name` or `;setrl @User Role-Name`", inline=True)
+        embed.add_field(name='User Permissions:', value='`None`', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == ';removerole':
+        embed = discord.Embed(title = "`;removerole` / `;remrl`", description = "Removes a role from the user.", color = embed_color)
+        embed.add_field(name='Usage', value="`;removerole @User Role-Name` or `;remrl @User Role-Name`", inline=True)
+        embed.add_field(name='User Permissions:', value='`None`', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == ';remrl':
+        embed = discord.Embed(title = "`;removerole` / `;remrl`", description = "Removes a role from the user.", color = embed_color)
+        embed.add_field(name='Usage', value="`;removerole @User Role-Name` or `;remrl @User Role-Name`", inline=True)
+        embed.add_field(name='User Permissions:', value='`None`', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == ';flip':
+        embed = discord.Embed(title = "`;flip` / `;flipcoin`", description = "Flips the coin.", color = embed_color)
+        embed.add_field(name='Usage', value="`;flip` or `;flipcoin`", inline=True)
+        embed.add_field(name='User Permissions:', value='`None`', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Send Messages, Attach Files', inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == ';roll':
+        embed = discord.Embed(title = "`;roll`", description = "Rolls the dice in NdN format.", color = embed_color)
+        embed.add_field(name='Usage', value="`;roll 5d5`", inline=True)
+        embed.add_field(name='User Permissions:', value='`None`', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == ';servers':
+        embed = discord.Embed(title = "`;servers`", description = "Shows the list of servers the bot is in.", color = embed_color)
+        embed.add_field(name='Usage', value="`;servers`", inline=True)
+        embed.add_field(name='User Permissions:', value='`None`', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        await client.say(embed = embed)
+        return
+
+    if command == ';h':
+        embed = discord.Embed(title = "`;h`", description = "Shows the info about a command.", color = embed_color)
+        embed.add_field(name='Usage', value="`;h ;ban`", inline=True)
+        embed.add_field(name='User Permissions:', value='`None`', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
+        await client.say(embed = embed)
+        return
+
 
 
 '''---------------------------------------------------------------------'''
