@@ -197,6 +197,13 @@ async def eightball(*choices):
     await client.say(embed = embed)
 
 
+@client.command(pass_context = True)
+async def now(ctx):
+    date = datetime.datetime.now().strftime("%A, %d.%m.%Y, **%H:%M**") 
+    embed = discord.Embed(description = ctx.message.author.mention + ", now is: " + date, color = embed_color)
+    await client.say(embed=embed)
+
+
 #command20
 @client.command()
 async def roll(dice : str):
@@ -647,6 +654,79 @@ async def h(command = None):
         embed.add_field(name='Bot Permissions:', value='Send Messages', inline=True)
         await client.say(embed = embed)
         return
+
+    if command == prefix+'now':
+        embed = discord.Embed(title = "`"+ prefix +"now`", description = "Shows the current day, date, time, year and hours/minutes.", color = embed_color)
+        embed.add_field(name='Usage', value="`"+ prefix +"now`", inline=True)
+        embed.add_field(name='User Permissions:', value='`None`', inline=True)
+        embed.add_field(name='Bot Permissions:', value='Send Messages, Attach Files, Embed Links', inline=True)
+        await client.say(embed = embed)
+        return
+
+
+##### LOGGING #####
+
+
+@client.event
+async def on_server_role_create(role, channel = loggingchannel):
+    embed = discord.Embed(title = "New Role Created!", color = embed_color)
+    embed.add_field(name="Role Name: ", value=role.name, inline=True)
+    await client.send_message(discord.Object(id=loggingchannel), embed=embed)
+    await client.process_commands(role)
+
+
+@client.event
+async def on_server_role_delete(role, channel = loggingchannel):
+    embed = discord.Embed(title = "Role Deleted", color = 0xF00000)
+    embed.add_field(name="Role Name: ", value=role.name, inline=True)
+    await client.send_message(discord.Object(id=loggingchannel), embed=embed)
+    await client.process_commands(role)
+
+
+@client.event
+async def on_member_ban(member, channel = loggingchannel):
+    embed = discord.Embed(title = "User Banned!", color = 0xF00000)
+    embed.add_field(name="User: ", value=member.name + "#" + member.discriminator, inline=True)
+    await client.send_message(discord.Object(id=loggingchannel), embed=embed)
+    await client.process_commands(member)
+
+
+@client.event
+async def on_message_edit(message, after, channel = loggingchannel):
+    embed = discord.Embed(title = "Message Edited!", description = "In channel: <#" + message.channel.id + ">", color = embed_color)
+    embed.add_field(name="New Content: ", value=after.content, inline=True)
+    embed.add_field(name="Old Content: ", value=message.content, inline=False)
+    embed.add_field(name="User: ", value=message.author.name + "#" + message.author.discriminator, inline=False)
+    print("Message Edited, New Content: " + after.content)
+    await client.send_message(discord.Object(id=loggingchannel), embed = embed)
+    await client.process_commands(message)
+
+
+@client.event
+async def on_message_delete(message, channel = loggingchannel):
+    embed = discord.Embed(title = "Message Deleted!", description = "In channel: <#" + message.channel.id + ">", color = embed_color)
+    embed.add_field(name="Message Content: ", value=message.content, inline=True)
+    embed.add_field(name="User: ", value=message.author.name + "#" + message.author.discriminator)
+    await client.send_message(discord.Object(id=loggingchannel), embed = embed)
+    await client.process_commands(message)
+
+##### LOGGING #####
+
+
+### MODULES ###
+@client.command(pass_context = True)
+async def modules(ctx):
+    embed = discord.Embed(title = "Available Modules", description = "-Fun\n-Logging(Requires You to input a channel for logging in `credentials.py`)", color = embed_color)
+    await client.say(embed = embed)
+
+
+@client.command(pass_context = True, aliases=['module-fun'])
+async def modulefn(ctx):
+    embed = discord.Embed(title = "Commands In Module: Fun", description = ";slotroll\n;flip\n;8ball\n;roll", color = embed_color)
+    embed.set_footer(text="To see the usage of a command, do `;h ;command-name`, example: `;h ;8ball`")
+    await client.say(embed = embed)
+
+### MODULES ###
 
 
 

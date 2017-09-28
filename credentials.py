@@ -4,4 +4,6 @@ Owners = ''
 
 EmbedColor = 
 
+LoggingChannel = ''
+
 Prefix = ""
