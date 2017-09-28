@@ -9,6 +9,8 @@ import requests
 from discord.ext.commands import Bot
 from discord.ext import commands
 import pickle
+import colorama
+from colorama import Fore, Back, Style
 import os
 from credentials import BotToken
 from credentials import Owners as owner
