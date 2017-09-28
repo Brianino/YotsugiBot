@@ -30,8 +30,17 @@ start_time = time.time()
 @client.event
 async def on_ready():
     print("Logging In...")
-    time.sleep(4)
+    time.sleep(2)
     print("Checking files..")
+    if not os.path.isfile("credentials.py"):
+        print(Back.RED + "credentials.py not found! Please add it then try again!")
+        await client.logout()
+    elif not os.path.isfile("heads.png"):
+        print(Back.RED + "heads.png not found! Please add it then try again!")
+        await client.logout()
+    elif not os.path.isfile("tails.png"):
+        print(Back.RED + "tails.png not found! Please add it then try again!")
+        await client.logout()
     time.sleep(2)
     print("Logged In | Client Credentials")
     print("\n       Client Name: {}".format(client.user.name) +"\n       Client ID: {}".format(client.user.id) + "\n       Prefix: {}".format(prefix) + "\n       Embed Color: {}".format(embed_color) + "\n       Version: {}".format(bot_version) + "\n       Owner ID: {}".format(owner))
@@ -271,7 +280,7 @@ async def shutdown(ctx):
     if owner == ctx.message.author.id:
         embed = discord.Embed(description = "Shutting Down...", color = embed_color)
         await client.say(embed = embed)
-        print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
+        print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran: " + prefix + aliases + "\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
         await client.logout()
         
 
@@ -686,6 +695,7 @@ async def on_server_role_delete(role, channel = loggingchannel):
 @client.event
 async def on_member_ban(member, channel = loggingchannel):
     embed = discord.Embed(title = "User Banned!", color = 0xF00000)
+    embed.set_author(name=member.name, url=member.avatar_url, icon_url=member.avatar_url)
     embed.add_field(name="User: ", value=member.name + "#" + member.discriminator, inline=True)
     await client.send_message(discord.Object(id=loggingchannel), embed=embed)
     await client.process_commands(member)
