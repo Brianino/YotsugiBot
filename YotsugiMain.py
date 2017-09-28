@@ -252,7 +252,7 @@ async def stats(ctx):
     embed = discord.Embed(title = "Yotsugi **" + bot_version + "**", color = embed_color)
     embed.add_field(name='Author', value=bot_author, inline=True)
     embed.add_field(name='Uptime', value="**%d** weeks, \n**%d** days, \n**%d** hours, \n**%d** minutes, \n**%d** seconds"% (week, day, hour, minute, second), inline=True)
-    embed.add_field(name='Owner IDs', value=bot_author_id, inline=True)
+    embed.add_field(name='Owner IDs', value=owner, inline=True)
     await client.say(embed = embed)
     print(Fore.CYAN + "Command Successfully Executed |\n       Command Ran In:[" + ctx.message.server.id + "]\n       User:[" + ctx.message.author.id + "]\n       Channel:[" + ctx.message.channel.id + "]")
 
