@@ -707,7 +707,6 @@ async def on_message_edit(message, after, channel = loggingchannel):
     embed.add_field(name="New Content: ", value=after.content, inline=True)
     embed.add_field(name="Old Content: ", value=message.content, inline=False)
     embed.add_field(name="User: ", value=message.author.name + "#" + message.author.discriminator, inline=False)
-    embed.add_field(name="In Channel: ", value=message.channel.name, inline=False)
     print("Message Edited, New Content: " + after.content)
     await client.send_message(discord.Object(id=loggingchannel), embed = embed)
     await client.process_commands(message)
@@ -718,7 +717,6 @@ async def on_message_delete(message, channel = loggingchannel):
     embed = discord.Embed(title = "Message Deleted!", description = "In channel: <#" + message.channel.id + ">", color = embed_color)
     embed.add_field(name="Message Content: ", value=message.content, inline=True)
     embed.add_field(name="User: ", value=message.author.name + "#" + message.author.discriminator)
-    embed.add_field(name="In Channel: ", value=message.channel.name, inline=False)
     await client.send_message(discord.Object(id=loggingchannel), embed = embed)
     await client.process_commands(message)
 
