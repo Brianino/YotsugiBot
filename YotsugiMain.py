@@ -408,7 +408,7 @@ async def h(command = None):
         await client.say(embed = embed)
         return
 
-    if command == prefix+'k':
+    if command == prefix+'kick':
         embed = discord.Embed(title = "`"+ prefix +"kick` / `"+ prefix +"k`", description = "Kicks the user from the server", color = embed_color)
         embed.add_field(name='Usage', value="`" + prefix +"kick @User/ID` or `" + prefix +"k @User/UserID`", inline=True)
         embed.add_field(name='User Permissions:', value='Kick Members', inline=True)
