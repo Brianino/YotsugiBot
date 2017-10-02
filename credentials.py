@@ -2,7 +2,7 @@ BotToken = ""
 
 Owners = ''
 
-EmbedColor = 
+EmbedColor = 0xHEX
 
 LoggingChannel = ''
 
