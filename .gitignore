@@ -14,3 +14,4 @@ build/Release
 #python stuff
 __pycache__
 credentials.py
+credentials.py
