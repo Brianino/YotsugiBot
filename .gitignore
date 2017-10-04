@@ -1,0 +1,16 @@
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Compiled binary
+build/Release
+
+#python stuff
+__pycache__
+credentials.py
