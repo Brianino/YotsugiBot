@@ -1551,22 +1551,5 @@ async def profile(ctx, *, user: str):
 
 ###### EXP AND DATABASE STUFF ######
 
-
-
-
-'''@client.event
-async def on_message(message):
-    if message.content.startswith('*test'):
-        await client.send_message(message.channel, "Are you sure you want to apply for partnership? [yes/no]")
-        msg = await client.wait_for_message(author = message.author, content = 'yes')
-        await client.send_message(message.channel, "What is the name of your server?")
-    else:
-        msg = await client.wait_for_message(author = message.author, content = 'no')
-        await client.send_message(message.channel, "Application discarded.")
-    await client.process_commands(message)'''
-
-
-
-
 '''---------------------------------------------------------------------'''
 client.run(BotToken)
